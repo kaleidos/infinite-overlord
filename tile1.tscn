@@ -16,17 +16,17 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:transform/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -34.3273 ), Vector2( 0, -18.8618 ), Vector2( 0, 0 ) ] }
+tracks/0/keys = { "times":FloatArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 4 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -34.3273 ), Vector2( 0, -18.8618 ), Vector2( 0, 0 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:transform/rot")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] }
+tracks/1/keys = { "times":FloatArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 4 ), "update":0, "values":[ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:transform/scale")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.877993 ), Vector2( 1, 0.902394 ), Vector2( 1, 1 ) ] }
+tracks/2/keys = { "times":FloatArray( 0, 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1, -4 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.877993 ), Vector2( 1, 0.902394 ), Vector2( 1, 1 ) ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:transform/pos")
 tracks/3/interp = 1
@@ -47,6 +47,11 @@ tracks/6/path = NodePath("Sprite:visibility/opacity")
 tracks/6/interp = 1
 tracks/6/imported = false
 tracks/6/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+tracks/7/type = "transform"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/imported = false
+tracks/7/keys = FloatArray(  )
 
 [node name="Node2D" type="Node2D"]
 
@@ -64,6 +69,6 @@ anims/Appear = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
-autoplay = ""
+autoplay = "StandyByAnimation"
 
 
