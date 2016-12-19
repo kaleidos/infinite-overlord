@@ -29,6 +29,36 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/imported = false
 tracks/3/keys = FloatArray(  )
+tracks/4/type = "value"
+tracks/4/path = NodePath("Middle:transform/rot")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 0.0, 0.0, 0.0 ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Middle:transform/pos")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = { "times":FloatArray( 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -4.6557, 48.515 ), Vector2( -4.6557, 48.515 ), Vector2( -4.6557, 27.3588 ), Vector2( -4.6557, 48.515 ), Vector2( -4.6557, 48.515 ) ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Middle:transform/scale")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = { "times":FloatArray( 0.3, 0.4, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 1.99338, 1.78539 ), Vector2( 1.99338, 1.78539 ), Vector2( 1.99338, 1.44416 ), Vector2( 1.99338, 1.78539 ), Vector2( 1.99338, 1.78539 ) ] }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Bottom:transform/pos")
+tracks/7/interp = 1
+tracks/7/imported = false
+tracks/7/keys = { "times":FloatArray( 0, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -3.29299, -65.501 ), Vector2( -3.29299, -65.4869 ), Vector2( -3.29299, -64.4869 ), Vector2( -3.29299, -65.4869 ) ] }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Bottom:transform/rot")
+tracks/8/interp = 1
+tracks/8/imported = false
+tracks/8/keys = { "times":FloatArray( 0, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 0.0, 0.0 ] }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Bottom:transform/scale")
+tracks/9/interp = 1
+tracks/9/imported = false
+tracks/9/keys = { "times":FloatArray( 0, 0.5, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 2, 1.86795 ), Vector2( 2, 1.70425 ), Vector2( 2, 1.70425 ), Vector2( 2, 1.70425 ) ] }
 
 [node name="Node2D" type="Node2D"]
 
@@ -53,14 +83,14 @@ autoplay = "StandyByAnimation"
 
 [node name="Middle" type="Sprite" parent="."]
 
-transform/pos = Vector2( -4.6557, 61.4106 )
-transform/scale = Vector2( 1.99338, 1.99338 )
+transform/pos = Vector2( -4.6557, 48.515 )
+transform/scale = Vector2( 1.99338, 1.78539 )
 texture = ExtResource( 1 )
 
 [node name="Bottom" type="Sprite" parent="."]
 
-transform/pos = Vector2( -1.29299, -60.4461 )
-transform/scale = Vector2( 1.96654, 1.96654 )
+transform/pos = Vector2( -2.31763, -59.9253 )
+transform/scale = Vector2( 2, 1.70425 )
 texture = ExtResource( 2 )
 
 
