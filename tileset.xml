@@ -6,8 +6,8 @@
 		<resource name="0/texture" external="0">  </resource>
 		<vector2 name="0/tex_offset"> 0, 0 </vector2>
 		<resource name="0/material"></resource>		<rect2 name="0/region"> 0, 0, 399, 367 </rect2>
-		<vector2 name="0/occluder_offset"> 199.5, 183.5 </vector2>
-		<resource name="0/occluder"></resource>		<vector2 name="0/navigation_offset"> 199.5, 183.5 </vector2>
+		<vector2 name="0/occluder_offset"> -0, -0 </vector2>
+		<resource name="0/occluder"></resource>		<vector2 name="0/navigation_offset"> -0, -0 </vector2>
 		<resource name="0/navigation"></resource>		<vector2 name="0/shape_offset"> 0, 0 </vector2>
 		<array name="0/shapes" len="0" shared="false">
 		</array>

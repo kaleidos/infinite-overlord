@@ -7,5 +7,6 @@
 [node name="rock" type="Sprite" parent="."]
 
 texture = ExtResource( 1 )
+centered = false
 
 

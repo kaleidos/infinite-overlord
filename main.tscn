@@ -9,7 +9,6 @@ script/script = ExtResource( 1 )
 
 [node name="map" type="TileMap" parent="."]
 
-transform/scale = Vector2( 0.4, 0.4 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell/size = Vector2( 300, 230 )
@@ -24,6 +23,6 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 131073, 0, 131074, 0, 131075, 0, 196609, 0, 196610, 0, 196611, 0, 262146, 0 )
+tile_data = IntArray( -65535, 0, 0, 0, 1, 0, 2, 0, 3, 0, 65537, 0, 65539, 0, 131074, 0 )
 
 

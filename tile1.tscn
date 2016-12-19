@@ -32,6 +32,14 @@ tracks/3/keys = FloatArray(  )
 
 [node name="Node2D" type="Node2D"]
 
+
+[node name="Sprite" type="Sprite" parent="."]
+
+material/material = SubResource( 1 )
+texture = ExtResource( 1 )
+centered = false
+
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 playback/process_mode = 1
