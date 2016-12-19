@@ -2,7 +2,7 @@
 <resource_file type="TileSet" subresource_count="2" version="2.1" version_name="Godot Engine v2.1.stable.official">
 	<ext_resource path="res://example-tie.png" type="Texture" index="0"></ext_resource>
 	<main_resource>
-		<string name="0/name"> "Sprite" </string>
+		<string name="0/name"> "rock" </string>
 		<resource name="0/texture" external="0">  </resource>
 		<vector2 name="0/tex_offset"> 0, 0 </vector2>
 		<resource name="0/material"></resource>		<rect2 name="0/region"> 0, 0, 399, 367 </rect2>
