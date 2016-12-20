@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://tile_water.gd" type="Script" id=1]
 [ext_resource path="res://animations/tile_appear_water.tres" type="Animation" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://assets/water_1.png" type="Texture" id=4]
 [ext_resource path="res://assets/particles/water_pixel.png" type="Texture" id=5]
 [ext_resource path="res://assets/particles/tile_water.tres" type="ColorRamp" id=6]
-[ext_resource path="res://water_pixel.png" type="Texture" id=7]
+[ext_resource path="res://assets/particles/tile_water_foam.tres" type="ColorRamp" id=7]
+[ext_resource path="res://water_pixel.png" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -38,14 +39,16 @@ modulate = Color( 0.262863, 0.354374, 0.628906, 1 )
 
 texture = ExtResource( 4 )
 
-[node name="Water_1" type="Particles2D" parent="."]
+[node name="Water_1" type="Node2D" parent="."]
+
+transform/pos = Vector2( 2.82861, 57.0487 )
+transform/scale = Vector2( 0.5, 0.5 )
+[node name="Water_part" type="Particles2D" parent="Water_1"]
 
 visibility/opacity = 0.5
-transform/pos = Vector2( 2.82431, 59.9986 )
-transform/scale = Vector2( 0.5, 0.5 )
-config/amount = 1000
-config/lifetime = 3.0
-config/half_extents = Vector2( 100, 0 )
+config/amount = 700
+config/lifetime = 7.0
+config/half_extents = Vector2( 120, 0 )
 config/texture = ExtResource( 5 )
 params/direction = 0.0
 params/spread = 0.0
@@ -67,17 +70,47 @@ randomness/spread = 20.0
 color/color = Color( 0.141724, 0.236985, 0.671875, 1 )
 color/color_ramp = ExtResource( 6 )
 
-[node name="Water_2" type="Particles2D" parent="."]
+[node name="Foam_part" type="Particles2D" parent="Water_1"]
 
 visibility/opacity = 0.5
-transform/pos = Vector2( 72.5437, 29.1771 )
-transform/rot = 49.3584
+transform/pos = Vector2( -2.07333, 1.61297 )
+config/amount = 500
+config/lifetime = 1.5
+config/half_extents = Vector2( 100, 0 )
+config/texture = ExtResource( 5 )
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 15.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 5.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 20.0
+color/color = Color( 0.987537, 0.992188, 0.98056, 1 )
+color/color_ramp = ExtResource( 7 )
+
+[node name="Water_2" type="Node2D" parent="."]
+
+[node name="Water_part" type="Particles2D" parent="Water_2"]
+
+visibility/opacity = 0.5
+transform/pos = Vector2( 72.1662, 26.6694 )
+transform/rot = 49.699
 transform/scale = Vector2( 0.5, 0.5 )
-config/amount = 1024
-config/lifetime = 4.0
+config/amount = 500
+config/lifetime = 7.0
 config/preprocess = 0.1
 config/half_extents = Vector2( 80, 5 )
-config/texture = ExtResource( 7 )
+config/texture = ExtResource( 8 )
 params/direction = 0.0
 params/spread = 3.0
 params/linear_velocity = 20.0
@@ -100,17 +133,53 @@ randomness/damping = 4.0
 color/color = Color( 0.53125, 0.659424, 1, 1 )
 color/color_ramp = ExtResource( 6 )
 
-[node name="Water_3" type="Particles2D" parent="."]
+[node name="Foam_part" type="Particles2D" parent="Water_2"]
 
 visibility/opacity = 0.5
-transform/pos = Vector2( -66.8302, 27.8956 )
-transform/rot = -47.1486
+transform/pos = Vector2( 62.2358, 34.1147 )
+transform/rot = 50.3557
 transform/scale = Vector2( 0.5, 0.5 )
-config/amount = 1024
-config/lifetime = 4.0
+config/amount = 500
+config/lifetime = 1.5
 config/preprocess = 0.1
 config/half_extents = Vector2( 80, 5 )
-config/texture = ExtResource( 7 )
+config/texture = ExtResource( 8 )
+params/direction = 0.0
+params/spread = 3.0
+params/linear_velocity = 20.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = -96.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spin_velocity = 3.0
+randomness/orbit_velocity = 2.0
+randomness/damping = 4.0
+color/color_ramp = ExtResource( 7 )
+
+[node name="Water_3" type="Node2D" parent="."]
+
+transform/pos = Vector2( -71.2315, 27.8956 )
+transform/rot = -55.2526
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="Water_part" type="Particles2D" parent="Water_3"]
+
+visibility/opacity = 0.5
+transform/rot = 3.92394
+config/amount = 500
+config/lifetime = 7.0
+config/preprocess = 0.1
+config/half_extents = Vector2( 80, 5 )
+config/texture = ExtResource( 8 )
 params/direction = 0.0
 params/spread = 24.0
 params/linear_velocity = 20.0
@@ -133,8 +202,39 @@ randomness/damping = 4.0
 color/color = Color( 0.486693, 0.957031, 0.272903, 1 )
 color/color_ramp = ExtResource( 6 )
 
+[node name="Foam_part" type="Particles2D" parent="Water_3"]
+
+visibility/opacity = 0.5
+transform/pos = Vector2( 7.54802, -2.19255 )
+config/amount = 250
+config/lifetime = 1.5
+config/preprocess = 0.1
+config/half_extents = Vector2( 80, 5 )
+config/texture = ExtResource( 8 )
+params/direction = 0.0
+params/spread = 24.0
+params/linear_velocity = 20.0
+params/spin_velocity = 55.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 96.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spin_velocity = 3.0
+randomness/orbit_velocity = 2.0
+randomness/damping = 4.0
+color/color_ramp = ExtResource( 7 )
+
 [node name="area" type="Area2D" parent="."]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -150,5 +250,3 @@ build_mode = 0
 polygon = Vector2Array( -49.3409, -59.3186, -99.1653, -0.11174, -50.3115, 60.0657, 48.69, 60.0657, 99.1614, 0.211792, 49.6606, -60.6127 )
 shape_range = Vector2( 0, 0 )
 trigger = true
-
-
