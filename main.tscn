@@ -26,7 +26,9 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
-[node name="map" type="Node2D" parent="."]
+[node name="main" type="Node2D" parent="."]
+
+[node name="map" type="Node2D" parent="main"]
 
 z/z = 1
 

@@ -20,20 +20,59 @@ func _button_pressed(viewport, event, shape, node):
 			character.moveTo(node.get_pos())
 			showAdjacentTiles(node)
 
+var drag = false
+var initPosCam = false
+var initPosMouse = false
+var initPosNode = false
+
 func _input(event):
+	var mouse_pos = get_global_mouse_pos()
+	
 	var zoom = get_node("camera").get_zoom()
 	var zoomStep = 0.10
+
+	if (event.type == InputEvent.MOUSE_MOTION):
+		if(drag == true):
+			var mouse_pos = get_global_mouse_pos()
+
+			var dist_x = initPosMouse.x - mouse_pos.x
+			var dist_y = initPosMouse.y - mouse_pos.y
+			
+			var nx = initPosNode.x - (0 + dist_x)
+			var ny = initPosNode.y - (0 + dist_y)
+		
+			get_node("main").set_pos(Vector2(nx,ny))
 	
 	if (event.type == InputEvent.MOUSE_BUTTON):
-		if (event.button_index == 5):
+		if (event.button_index == BUTTON_WHEEL_DOWN):
 			zoom[0] = zoom[0] + zoomStep
 			zoom[1] = zoom[1] + zoomStep
-		if (event.button_index == 4):
+			
+		if (event.button_index == BUTTON_WHEEL_UP):
 			if(zoom[0] - zoomStep > 0 && zoom[1] - zoomStep > 0):
 				zoom[0] = zoom[0] - zoomStep
 				zoom[1] = zoom[1] - zoomStep
 				
+		if (event.button_index == BUTTON_MIDDLE):
+			if(Input.is_mouse_button_pressed(3)):
+				initPosMouse = get_global_mouse_pos()
+				initPosNode = get_node("main").get_pos()
+				drag = true
+			else:
+				drag = false	
+				
 		get_node("camera").set_zoom(zoom)
+	
+#	if (event.type == InputEvent.MOUSE_BUTTON):
+#		if (event.button_index == 5):
+#			zoom[0] = zoom[0] + zoomStep
+#			zoom[1] = zoom[1] + zoomStep
+#		if (event.button_index == 4):
+#			if(zoom[0] - zoomStep > 0 && zoom[1] - zoomStep > 0):
+#				zoom[0] = zoom[0] - zoomStep
+#				zoom[1] = zoom[1] - zoomStep
+#				
+#		get_node("camera").set_zoom(zoom)
 			
 func prepareTiles():
 	tilesTypes = {}
@@ -47,7 +86,7 @@ func initCharacter():
 	var characterScene = load("res://character.tscn")
 	
 	character = characterScene.instance()
-	add_child(character)
+	self.get_node("main").add_child(character)
 	
 	character.set_pos(Vector2(10, 30))
 	character.set_z(10)
@@ -119,7 +158,7 @@ func showTile(center, axial = null):
 
 	var tileIns = tilesTypes[tile].instance()
 	
-	get_node("map").add_child(tileIns)
+	get_node("main/map").add_child(tileIns)
 	tileIns.set_pos(center)
 	tileIns.set_z(center.y)
 	tileIns.axial = axial
