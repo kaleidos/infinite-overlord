@@ -8,32 +8,17 @@ var tilesTypes
 var character
 
 func _ready():
-	#map = get_node("map")
-	
 	prepareTiles()
-#	storeMapCells()
-	
-	var sorter = CellsSorter.new()
-	mapCells.sort_custom(sorter, "sort")
-	
-#	for cell in mapCells:
-#		var cellPosition = map.map_to_world(cell.position)
-#		
-#		var nodeRock = tile1RockScene.instance()
-#		add_child(nodeRock)
-#		nodeRock.set_pos(cellPosition)
-#		nodeRock.set_z(cell.position.y)
-#		nodeRock.get_node("area").connect("input_event", self, "_button_pressed", [nodeRock])
-#		#nodeRock.get_node("AnimationPlayer").play("Appear")
-		
 	initCharacter()
 		
-	set_process(true)
+	#set_process(true)
 	set_process_input(true)
 	
 func _button_pressed(viewport, event, shape, node):
-	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_RIGHT && event.pressed == 0):		
-		character.moveTo(node.get_pos())
+	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_RIGHT && event.pressed == 0):	
+		if node.canMove():
+			character.moveTo(node.get_pos())
+			showAdjacentTiles(node)
 
 func _input(event):
 	var zoom = get_node("camera").get_zoom()
@@ -49,55 +34,6 @@ func _input(event):
 				zoom[1] = zoom[1] - zoomStep
 				
 		get_node("camera").set_zoom(zoom)
-
-#func _input(event):
-#	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_RIGHT):
-#		print(event)
-#		characterToPosition(event.pos)
-		
-#func characterToPosition(pos): 
-#	character.set_pos(pos)
-	
-#func hideCell(cell):
-#	map.set_cell(cell.x, cell.y, -1)
-#	
-#func storeMapCells():
-#	var cells = map.get_used_cells()
-#	
-#	for cell in cells:
-#		var cellIndex = map.get_cellv(cell)
-#		var tile = {
-#			"index": cellIndex,
-#			"position": cell,
-#			"worldPosition": map.map_to_world(cell)
-#		}
-#
-#		mapCells.append(tile)
-#		
-#		#hideCell(cell)
-		
-#func showTile(position, animation = false):
-#	for cell in mapCells:
-#		if cell.position == position:
-#			#map.set_cell(cell.position.x, cell.position.y, cell.index)
-#			
-#			if animation:
-#				print("------------")
-#				var cellPosition = map.map_to_world(cell.position)
-#				print(cellPosition)
-#								
-#				#var xx = Vector2(300, -(230/2))	
-#				
-#				cellPosition.x = cellPosition.x
-#				cellPosition.y = cellPosition.y
-#				
-#				var nodeRock = tile1RockScene.instance()
-#				add_child(nodeRock)
-#				#nodeRock.set_scale(scale)
-#				nodeRock.set_pos(cellPosition)
-#				#nodeRock.get_node("AnimationPlayer").play("Appear")
-#			else:
-#				map.set_cell(cell.position.x, cell.position.y, cell.index)
 			
 func prepareTiles():
 	tilesTypes = {}
@@ -118,42 +54,71 @@ func initCharacter():
 	showTile(character.get_pos())
 	
 	# 150x122
-	showTilePlayer("top")
-	showTilePlayer("top-left")
-	showTilePlayer("top-right")
-	showTilePlayer("bottom")
-	showTilePlayer("bottom-left")
-	showTilePlayer("bottom-right")
-	var pos = character.get_pos();
-	pos.x +=  150
-	pos.y -=  61
-	showTile(pos)
+	showAdjacentTiles(character)
 
-func showTilePlayer(position):
+func showAdjacentTiles(node):
+	print(node.get_pos())
 	var tileSize = Vector2(150, 122)
-	var pos = character.get_pos()	
+	var pos
 	
-	if position == "top":
-		pos.y -=  tileSize.y
-	elif position == "top-right":
-		pos.x +=  tileSize.x
-		pos.y -=  tileSize.y / 2
-	elif position == "top-left":
-		pos.x -=  tileSize.x
-		pos.y -=  tileSize.y / 2
-	elif position == "bottom":
-		pos.y +=  tileSize.y
-	elif position == "bottom-right":
-		pos.x +=  tileSize.x
-		pos.y +=  tileSize.y / 2
-	elif position == "bottom-left":
-		pos.x -=  tileSize.x
-		pos.y +=  tileSize.y / 2		
+	# top
+	pos = Vector2(node.get_pos().x, node.get_pos().y)
+	pos.y -=  tileSize.y
 	
-	showTile(pos)	
+	if getTileByPos(pos) == null:
+		showTile(pos)	
+	
+	# top-right
+	pos = Vector2(node.get_pos().x, node.get_pos().y)
+	pos.x +=  tileSize.x
+	pos.y -=  tileSize.y / 2
+	
+	if getTileByPos(pos) == null:
+		showTile(pos)	
+	
+	# top-left
+	pos = Vector2(node.get_pos().x, node.get_pos().y)
+	pos.x -=  tileSize.x
+	pos.y -=  tileSize.y / 2
+	
+	if getTileByPos(pos) == null:
+		showTile(pos)	
+	
+	# bottom
+	pos = Vector2(node.get_pos().x, node.get_pos().y)
+	pos.y +=  tileSize.y
+	
+	if getTileByPos(pos) == null:
+		showTile(pos)	
+	
+	# bottom-right
+	pos = Vector2(node.get_pos().x, node.get_pos().y)
+	pos.x +=  tileSize.x
+	pos.y +=  tileSize.y / 2
+	
+	if getTileByPos(pos) == null:
+		showTile(pos)	
+
+	# bottom-left
+	pos = Vector2(node.get_pos().x, node.get_pos().y)
+	pos.x -=  tileSize.x
+	pos.y +=  tileSize.y / 2	
+		
+	if getTileByPos(pos) == null:
+		showTile(pos)	
+		
+func getTileByPos(pos):
+	for cell in mapCells:
+		if cell.pos == pos:
+			return cell
+			
+	return null	
 	
 func showTile(center):
-	var nodeRock = tilesTypes.rock.instance()
+	var tile = tilesTypes.all[randi() % tilesTypes.all.size()]
+
+	var nodeRock = tilesTypes[tile].instance()
+	
 	get_node("map").add_child(nodeRock)
 	nodeRock.set_pos(center)
 	nodeRock.set_z(center.y)
@@ -164,19 +129,8 @@ func showTile(center):
 	nodeRock.get_node("area").connect("input_event", self, "_button_pressed", [nodeRock])
 		#nodeRock.get_node("AnimationPlayer").play("Appear")	
 	
-func _process(delta):
-
-	#print(tiles)
-	#print(map.get_used_cells())
-	#print(map.get_cellv(Vector2(1, 0)))
-	#map.set_cell(1, 0, -1) # clear
-
-	#var xx = Vector2(300, 570)	
-	var xx = Vector2(300, -(230/2))	
-
-	#nodeRock.set_pos(xx)
-	#nodeRock.show()	
+	var tile = {
+		"pos": center
+	}
 	
-class CellsSorter:
-    func sort(cell1, cell2):
-        return cell1.worldPosition.y < cell2.worldPosition.y
+	mapCells.append(tile)
