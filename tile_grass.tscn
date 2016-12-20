@@ -2,7 +2,7 @@
 
 [ext_resource path="res://animations/tile_appear_grass.tres" type="Animation" id=1]
 [ext_resource path="res://assets/bottom_rock_1.png" type="Texture" id=2]
-[ext_resource path="res://assets/rock_2.png" type="Texture" id=3]
+[ext_resource path="res://assets/rock_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/particles/water_waves.png" type="Texture" id=4]
 [ext_resource path="res://assets/grass.png" type="Texture" id=5]
 [ext_resource path="res://assets/grass_decoration.png" type="Texture" id=6]
@@ -37,7 +37,7 @@ texture = ExtResource( 3 )
 [node name="Light2D" type="Light2D" parent="."]
 
 visibility/opacity = 0.0
-transform/pos = Vector2( -8.09677, -79.9668 )
+transform/pos = Vector2( -8.38875, -80.5508 )
 transform/scale = Vector2( 2.22168, 1 )
 enabled = true
 editor_only = false
@@ -71,6 +71,7 @@ texture = ExtResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

@@ -29,7 +29,7 @@ autoplay = "StandyByAnimation"
 
 transform/pos = Vector2( 0, 60 )
 texture = ExtResource( 2 )
-modulate = Color( 0.377686, 0.382894, 0.710938, 1 )
+modulate = Color( 0.262863, 0.354374, 0.628906, 1 )
 
 [node name="Middle" type="Sprite" parent="."]
 
