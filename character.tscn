@@ -1,21 +1,21 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://character.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=1]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="GDScript" id=1]
 
-script/script = ExtResource( 1 )
+script/source = "extends KinematicBody2D\n\nvar walkspeed = 200\nvar targetPosition\nvar moving = false\n\nfunc _ready():\n\tset_fixed_process(true)\n\nfunc _fixed_process(delta):\n\tvar pos = get_pos()\n\t\n\tif moving:\n\t\tvar direction = (targetPosition - get_pos()).normalized()\n\t\tvar motion = direction * walkspeed * delta\n\t\tmove(motion)\n\t\t\n\t\tif pos == get_pos():\n\t\t\tmoving = false\n\nfunc moveTo(_destination_):\n\ttargetPosition = _destination_\n\t\n\tmoving = true"
 
-[node name="body" type="KinematicBody2D" parent="."]
+[node name="KinematicBody2D" type="KinematicBody2D"]
 
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
+script/script = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="body"]
+[node name="Sprite" type="Sprite" parent="."]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 
 
