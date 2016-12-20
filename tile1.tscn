@@ -1,18 +1,13 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=5 format=1]
-=======
-[gd_scene load_steps=3 format=1]
->>>>>>> Stashed changes
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://assets/bottom_rock_1.png" type="Texture" id=1]
 [ext_resource path="res://assets/rock_2.png" type="Texture" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -101.136, -169.126, 97.2263, -167.136, 195.412, -66.9591, 94.5726, 39.1881, -103.79, 38.5247, -201.976, -66.2957 )
 
-<<<<<<< Updated upstream
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -20,8 +15,6 @@ points = Vector2Array( -101.136, -169.126, 97.2263, -167.136, 195.412, -66.9591,
 texture = ExtResource( 1 )
 centered = false
 
-=======
->>>>>>> Stashed changes
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 playback/process_mode = 1
@@ -47,7 +40,7 @@ texture = ExtResource( 2 )
 [node name="area" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
