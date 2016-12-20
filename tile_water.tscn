@@ -132,6 +132,7 @@ color/color_ramp = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
