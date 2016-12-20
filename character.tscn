@@ -4,7 +4,7 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends KinematicBody2D\n\nvar walkspeed = 200\nvar targetPosition\nvar moving = false\n\nfunc _ready():\n\tset_fixed_process(true)\n\nfunc _fixed_process(delta):\n\tvar pos = get_pos()\n\t\n\tif moving:\n\t\tvar direction = (targetPosition - get_pos()).normalized()\n\t\tvar motion = direction * walkspeed * delta\n\t\tmove(motion)\n\t\t\n\t\tif pos == get_pos():\n\t\t\tmoving = false\n\nfunc moveTo(_destination_):\n\ttargetPosition = _destination_\n\t\n\tmoving = true"
+script/source = "extends KinematicBody2D\n\nvar walkspeed = 400\nvar targetPosition\nvar moving = false\n\nfunc _ready():\n\tset_fixed_process(true)\n\nfunc _fixed_process(delta):\n\tif moving && (get_pos() - targetPosition).length() <= 10:\n\t\tmoving = false\n\t\n\tif moving:\n\t\tvar direction = (targetPosition - get_pos()).normalized()\n\t\tvar motion = direction * walkspeed * delta\n\t\tmove(motion)\n\nfunc moveTo(_destination_):\n\ttargetPosition = _destination_\n\t\n\tmoving = true"
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 
