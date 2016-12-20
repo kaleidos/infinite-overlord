@@ -13,3 +13,6 @@ func _ready():
 
 func canMove():
 	return true
+	
+func getAnimation():
+	return "tile_appear_water"	

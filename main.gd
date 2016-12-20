@@ -128,7 +128,7 @@ func showTile(center, axial = null):
 		character.set_z(tileIns.get_z() + 1)
 
 	tileIns.get_node("area").connect("input_event", self, "_button_pressed", [tileIns])
-		#nodeRock.get_node("AnimationPlayer").play("Appear")	
+	tileIns.get_node("AnimationPlayer").play(tileIns.getAnimation())	
 	
 	var tile = {
 		"node": tileIns,
@@ -138,7 +138,7 @@ func showTile(center, axial = null):
 	
 	mapCells.append(tile)
 	
-	var showLabel = true
+	var showLabel = false
 	
 	if showLabel:
 		var text = Label.new()
