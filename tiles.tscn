@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://assets/hexagono2.png" type="Texture" id=1]
+[ext_resource path="res://assets/rock_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/water_1.png" type="Texture" id=2]
+[ext_resource path="res://assets/grass_xample.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -8,5 +10,15 @@
 
 texture = ExtResource( 1 )
 centered = false
+
+[node name="water" type="Sprite" parent="."]
+
+transform/pos = Vector2( -95.291, -38.7812 )
+texture = ExtResource( 2 )
+
+[node name="grass" type="Sprite" parent="."]
+
+transform/pos = Vector2( -101.939, 144.044 )
+texture = ExtResource( 3 )
 
 
