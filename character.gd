@@ -1,26 +1,27 @@
 extends Node2D
 
-var elapsed = 0
-var time = 1000
-var destination
+var walkspeed = 200
+var targetPosition
+var body
 var moving = false
-var start
 
 func _ready():
-	set_process(true)
+	body = get_node("body")
+	set_fixed_process(true)
 
-func _process(delta):
-	if !moving:
-		return
+func _fixed_process(delta):
+	if body.get_pos() == targetPosition:
+		moving = false
 	
-	if elapsed >= time:
-		set_pos(destination)
-		return
-		
-	elapsed += delta
-	var intermediate =  (destination-start) / (elapsed / time) + start
-	set_pos(intermediate)
+	if moving:
+		var direction = (targetPosition - body.get_pos()).normalized()
+		print(direction)
+		var motion = direction * walkspeed * delta
+		body.move(motion)
 
 func moveTo(_destination_):
-	moving = true
-	destination = _destination_
+	targetPosition = _destination_
+	print(body.get_pos())
+	print(targetPosition)
+	print(targetPosition - body.get_pos())
+	#moving = true

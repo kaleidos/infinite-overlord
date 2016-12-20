@@ -53,7 +53,7 @@ func _button_pressed(viewport, event, shape, node):
 		print("shape", shape)
 		print("node", node)
 		
-		character.set_pos(node.get_pos())
+		character.moveTo(node.get_pos())
 
 #func _input(event):
 #	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_RIGHT):
