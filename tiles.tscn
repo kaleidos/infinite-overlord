@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://example-tie.png" type="Texture" id=1]
+[ext_resource path="res://assets/hexagono2.png" type="Texture" id=1]
 
 [node name="Node2D" type="Node2D"]
 
