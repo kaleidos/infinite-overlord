@@ -71,7 +71,7 @@ shadow/item_mask = 1
 
 [node name="Grass" type="Sprite" parent="."]
 
-transform/pos = Vector2( 0, -9 )
+transform/pos = Vector2( 0, -9.80719 )
 texture = ExtResource( 7 )
 
 [node name="Grass_Deco" type="Sprite" parent="."]

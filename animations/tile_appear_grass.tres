@@ -3,7 +3,7 @@
 [resource]
 
 resource/name = "Appear"
-length = 2.0
+length = 1.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -30,7 +30,7 @@ tracks/4/type = "value"
 tracks/4/path = NodePath("Grass_Deco:visibility/opacity")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0, 0.4, 0.8, 1.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 0.0, 1.0 ] }
+tracks/4/keys = { "times":FloatArray( 0, 0.4, 0.8, 1.4 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 0.0, 1.0 ] }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Grass:transform/pos")
 tracks/5/interp = 1

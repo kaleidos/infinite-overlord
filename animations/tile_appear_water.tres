@@ -3,7 +3,7 @@
 [resource]
 
 resource/name = "Appear"
-length = 2.0
+length = 1.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -30,7 +30,7 @@ tracks/4/type = "value"
 tracks/4/path = NodePath("Bottom:modulate")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0, 1, 2 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ Color( 0.277161, 0.548965, 0.933594, 1 ), Color( 0.277161, 0.548965, 0.933594, 1 ), Color( 0.262863, 0.354374, 0.628906, 1 ) ] }
+tracks/4/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Color( 0.277161, 0.548965, 0.933594, 1 ), Color( 0.277161, 0.548965, 0.933594, 1 ) ] }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Water_3:visibility/opacity")
 tracks/5/interp = 1
