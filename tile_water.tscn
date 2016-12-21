@@ -74,33 +74,6 @@ randomness/damping = 4.0
 color/color = Color( 0.53125, 0.659424, 1, 1 )
 color/color_ramp = ExtResource( 6 )
 
-[node name="Foam_part" type="Particles2D" parent="Water_1"]
-
-visibility/opacity = 0.5
-transform/pos = Vector2( -2.07333, 1.61297 )
-config/amount = 100
-config/lifetime = 1.0
-config/half_extents = Vector2( 100, 0 )
-config/texture = ExtResource( 5 )
-params/direction = 0.0
-params/spread = 0.0
-params/linear_velocity = 15.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 0.0
-params/gravity_strength = 5.0
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 0.0
-params/initial_size = 1.0
-params/final_size = 1.0
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/spread = 20.0
-color/color = Color( 0.987537, 0.992188, 0.98056, 1 )
-
 [node name="Water_2" type="Node2D" parent="."]
 
 [node name="Water_part" type="Particles2D" parent="Water_2"]
@@ -134,37 +107,6 @@ randomness/orbit_velocity = 2.0
 randomness/damping = 4.0
 color/color = Color( 0.53125, 0.659424, 1, 1 )
 color/color_ramp = ExtResource( 6 )
-
-[node name="Foam_part" type="Particles2D" parent="Water_2"]
-
-visibility/opacity = 0.5
-transform/pos = Vector2( 69.2779, 27.5128 )
-transform/rot = 50.3557
-transform/scale = Vector2( 0.5, 0.5 )
-config/amount = 100
-config/lifetime = 1.0
-config/preprocess = 0.1
-config/half_extents = Vector2( 80, 5 )
-config/texture = ExtResource( 5 )
-params/direction = 0.0
-params/spread = 3.0
-params/linear_velocity = 20.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = -96.0
-params/gravity_strength = 9.8
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 0.0
-params/initial_size = 1.0
-params/final_size = 1.0
-params/hue_variation = 1.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/spin_velocity = 3.0
-randomness/orbit_velocity = 2.0
-randomness/damping = 4.0
 
 [node name="Water_3" type="Node2D" parent="."]
 
@@ -201,35 +143,6 @@ randomness/orbit_velocity = 2.0
 randomness/damping = 4.0
 color/color = Color( 0.486693, 0.957031, 0.272903, 1 )
 color/color_ramp = ExtResource( 6 )
-
-[node name="Foam_part" type="Particles2D" parent="Water_3"]
-
-visibility/opacity = 0.5
-transform/pos = Vector2( 0.49609, 0.989854 )
-config/amount = 100
-config/lifetime = 1.0
-config/preprocess = 0.1
-config/half_extents = Vector2( 80, 5 )
-config/texture = ExtResource( 5 )
-params/direction = 0.0
-params/spread = 24.0
-params/linear_velocity = 20.0
-params/spin_velocity = 55.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 96.0
-params/gravity_strength = 9.8
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 0.0
-params/initial_size = 1.0
-params/final_size = 1.0
-params/hue_variation = 1.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-randomness/spin_velocity = 3.0
-randomness/orbit_velocity = 2.0
-randomness/damping = 4.0
 
 [node name="area" type="Area2D" parent="."]
 
