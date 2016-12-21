@@ -2,9 +2,11 @@ extends Node2D
 
 var map
 var mapCells = []
+var selectedTiles = []
 
 var tilesTypes
 var character
+var structureSelected
 var tileSize = Vector2(150, 122)
 
 func _ready():
@@ -141,6 +143,11 @@ func hidePath(path):
 			cell.node.get_node("hover").hide()
 	
 func _button_pressed(viewport, event, shape, node):
+	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_LEFT && event.pressed == 0):	
+		if node.has_node("selected"):
+			addStructure(node, structureSelected)
+			cleanSelectedNodes()
+	
 	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_RIGHT && event.pressed == 0):	
 		if node.canMove() && !character.moving:
 			var path = breadthFirstSearch(character.cube, node.cube)
@@ -242,14 +249,25 @@ func initCharacter():
 func selectTile(node):
 	var selected = tilesTypes.selected.instance()
 	selected.set_z(8)
-	node.add_child(selected)	
+	node.add_child(selected)
+	selectedTiles.append(node)
+	
+func unSelectTile(node):
+	node.remove_child(node.get_node("selected"))
 	
 func prepareBuild(type):
+	structureSelected = type
+	
 	var tiles = neighbors(character.cube, true)
-	print(tiles)
 	for tile in tiles.keys():
 		if tiles[tile] != null:
 			selectTile(tiles[tile].node)
+			
+func cleanSelectedNodes():
+	for tile in selectedTiles:
+		unSelectTile(tile)
+		
+	selectedTiles = []
 	
 func addStructure(cell, type):	
 	var structure = tilesTypes.structures[type].instance()
