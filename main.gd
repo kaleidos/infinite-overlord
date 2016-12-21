@@ -210,14 +210,14 @@ func initCharacter():
 	character.set_z(10)
 	character.cube = Vector3(0, 0, 0)
 
-	var tileHome = showTile(character.get_pos(), Vector3(0,0,0))
+	var tileHome = showTile(character.get_pos(), Vector3(0,0,0), "rock")
 	tileHome.get_node("AnimationPlayer").connect("finished", self, "addStructure", [tileHome, "tower"])
 	showAdjacentTiles(tileHome)
 	
 	var pos = Vector2(tileHome.get_pos().x, tileHome.get_pos().y)
 	pos.y +=  tileSize.y * 3
 	
-	var tileTown = showTile(pos, Vector3(0, -3, 3))
+	var tileTown = showTile(pos, Vector3(0, -3, 3), "rock")
 	showAdjacentTiles(tileTown)
 	
 	tileTown.get_node("AnimationPlayer").connect("finished", self, "addStructure", [tileTown, "town"])
@@ -292,8 +292,12 @@ func getTileByPos(pos):
 			
 	return null	
 	
-func showTile(center, cube):
-	var tile = tilesTypes.all[randi() % tilesTypes.all.size()]
+func showTile(center, cube, type = null):
+	var tile
+	if type == null:
+		tile = tilesTypes.all[randi() % tilesTypes.all.size()]
+	else:
+		tile = type
 
 	var tileIns = tilesTypes[tile].instance()
 	
