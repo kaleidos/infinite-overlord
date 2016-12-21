@@ -211,22 +211,24 @@ func initCharacter():
 	character.cube = Vector3(0, 0, 0)
 
 	var tileHome = showTile(character.get_pos(), Vector3(0,0,0))
-	
-	addStructure(tileHome, "tower")
+	tileHome.get_node("AnimationPlayer").connect("finished", self, "addStructure", [tileHome, "tower"])
 	showAdjacentTiles(tileHome)
 	
 	var pos = Vector2(tileHome.get_pos().x, tileHome.get_pos().y)
 	pos.y +=  tileSize.y * 3
 	
 	var tileTown = showTile(pos, Vector3(0, -3, 3))
-	addStructure(tileTown, "town")
 	showAdjacentTiles(tileTown)
+	
+	tileTown.get_node("AnimationPlayer").connect("finished", self, "addStructure", [tileTown, "town"])
 	
 func addStructure(cell, type):	
 	var structure = tilesTypes.structures[type].instance()
 	structure.set_z(9)
 	cell.add_child(structure)
-		
+	
+	structure.get_node("AnimationPlayer").play("Structure Appear")	
+	
 func showAdjacentTilesByCords(pos):
 	var tile = getTileByPos(pos)
 	showAdjacentTiles(tile.node)
