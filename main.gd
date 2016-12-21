@@ -10,9 +10,24 @@ var tileSize = Vector2(150, 122)
 func _ready():
 	prepareTiles()
 	initCharacter()
+	generateUI()
 		
 	#set_process(true)
 	set_process_input(true)
+	
+func generateUI():
+	var menuScene = load("res://menu.tscn")
+	var menu = menuScene.instance()
+	var screenSize = get_viewport().get_rect().size
+	
+	self.get_node("ui").add_child(menu)
+	
+	var menuPosition = screenSize - menu.get_size()
+	
+	menuPosition.x -= 90
+	menuPosition.y -= 50
+
+	menu.set_pos(menuPosition)
 
 func neighborsVector(cords, valid = false):
 	var result = {}
@@ -46,7 +61,7 @@ func neighborsVector(cords, valid = false):
 
 	return result
 
-func neighbors(init):
+func neighbors(init, valid = false):
 	var result = {
 		"top": null,
 		"topRight": null,
@@ -55,20 +70,20 @@ func neighbors(init):
 		"bottomRight": null,
 		"bottomLeft": null
 	}
-	var tilesNeighbor = neighborsVector(init)
+	var tilesNeighbor = neighborsVector(init, valid)
 
 	for cell in mapCells:
-		if result.top == null && cell.cube == tilesNeighbor.top:
+		if tilesNeighbor.has("top") && result.top == null && cell.cube == tilesNeighbor.top:
 			result.top = cell
-		elif result.topRight == null && cell.cube == tilesNeighbor.topRight:
+		elif tilesNeighbor.has("topRight") && result.topRight == null && cell.cube == tilesNeighbor.topRight:
 			result.topRight = cell			
-		elif result.topLeft == null && cell.cube == tilesNeighbor.topLeft:
+		elif tilesNeighbor.has("topLeft") && result.topLeft == null && cell.cube == tilesNeighbor.topLeft:
 			result.toptopLeft = cell	
-		elif result.bottom == null && cell.cube == tilesNeighbor.bottom:
+		elif tilesNeighbor.has("bottom") && result.bottom == null && cell.cube == tilesNeighbor.bottom:
 			result.bottom = cell
-		elif result.bottomRight == null && cell.cube == tilesNeighbor.bottomRight:
+		elif tilesNeighbor.has("bottomRight") && result.bottomRight == null && cell.cube == tilesNeighbor.bottomRight:
 			result.bottomRight = cell
-		elif result.bottomLeft == null && cell.cube == tilesNeighbor.bottomLeft:
+		elif tilesNeighbor.has("bottomLeft") && result.bottomLeft == null && cell.cube == tilesNeighbor.bottomLeft:
 			result.bottomLeft = cell
 
 	return result
@@ -191,12 +206,14 @@ func _input(event):
 			
 func prepareTiles():
 	tilesTypes = {}
+	tilesTypes.selected = load("res://selected.tscn")
 	tilesTypes.rock = load("res://tile1.tscn")
 	tilesTypes.grass = load("res://tile_grass.tscn")
 	tilesTypes.water = load("res://tile_water.tscn")
 	tilesTypes.structures = {}
 	tilesTypes.structures.tower = load("res://structures/tower.tscn")
 	tilesTypes.structures.town = load("res://structures/town.tscn")
+	tilesTypes.structures.mine = load("res://structures/mine.tscn")
 	
 	tilesTypes.all = ["rock", "grass", "water"]
 	
@@ -221,6 +238,18 @@ func initCharacter():
 	showAdjacentTiles(tileTown)
 	
 	tileTown.get_node("AnimationPlayer").connect("finished", self, "addStructure", [tileTown, "town"])
+
+func selectTile(node):
+	var selected = tilesTypes.selected.instance()
+	selected.set_z(8)
+	node.add_child(selected)	
+	
+func prepareBuild(type):
+	var tiles = neighbors(character.cube, true)
+	print(tiles)
+	for tile in tiles.keys():
+		if tiles[tile] != null:
+			selectTile(tiles[tile].node)
 	
 func addStructure(cell, type):	
 	var structure = tilesTypes.structures[type].instance()
@@ -354,13 +383,13 @@ func removeNotBorderAnimations():
 				search.cube.z -1 == cell.cube.z):
 				removeBottom = true				
 
-		if removeBottom:
+		if removeBottom && cell.node.has_node("Water_1"):
 			cell.node.remove_child(cell.node.get_node("Water_1"))
 			
-		if removeRight:
+		if removeRight && cell.node.has_node("Water_2"):
 			cell.node.remove_child(cell.node.get_node("Water_2"))
 			
-		if removeLeft:
+		if removeLeft && cell.node.has_node("Water_3"):
 			cell.node.remove_child(cell.node.get_node("Water_3"))
 
 # #	var sorter = CellsSorter.new()

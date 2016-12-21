@@ -32,4 +32,11 @@ drag_margin/bottom = 0.2
 
 z/z = 1
 
+[node name="ui" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
 
