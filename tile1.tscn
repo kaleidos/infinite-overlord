@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://tile1.gd" type="Script" id=1]
 [ext_resource path="res://animations/tile_appear.tres" type="Animation" id=2]
 [ext_resource path="res://assets/bottom_rock_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/rock_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/tilered.png" type="Texture" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -53,5 +54,11 @@ build_mode = 0
 polygon = Vector2Array( -103.083, -186.003, 81.8873, -186.752, 173.998, -73.6724, 82.6362, 36.4114, -100.837, 36.4114, -197.441, -73.6724 )
 shape_range = Vector2( 0, 0 )
 trigger = false
+
+[node name="hover" type="Sprite" parent="."]
+
+visibility/visible = false
+z/z = 1
+texture = ExtResource( 5 )
 
 

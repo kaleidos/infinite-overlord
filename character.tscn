@@ -4,7 +4,7 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends KinematicBody2D\n\nvar walkspeed = 400\nvar targetPosition\nvar moving = false\n\nfunc _ready():\n\tset_fixed_process(true)\n\nfunc _fixed_process(delta):\n\tif moving && (get_pos() - targetPosition).length() <= 10:\n\t\tmoving = false\n\t\n\tif moving:\n\t\tvar direction = (targetPosition - get_pos()).normalized()\n\t\tvar motion = direction * walkspeed * delta\n\t\tmove(motion)\n\nfunc moveTo(_destination_):\n\ttargetPosition = _destination_\n\t\n\tmoving = true"
+script/source = "extends KinematicBody2D\n\nvar walkspeed = 400\nvar targetPosition\nvar path\nvar moving = false\nvar cube\nvar cubePath\n\nfunc _ready():\n\tset_fixed_process(true)\n\nfunc _fixed_process(delta):\n\tif moving && (get_pos() - targetPosition).length() <= 10:\n\t\tnextPosition()\n\t\n\tif moving:\n\t\tvar direction = (targetPosition - get_pos()).normalized()\n\t\tvar motion = direction * walkspeed * delta\n\t\tmove(motion)\n\nfunc nextPosition():\n\tif !path.empty():\n\t\ttargetPosition = path[0]\n\t\tpath.pop_front()\t\n\t\tmoving = true\n\telse:\n\t\tmoving = false\n\t\tget_tree().get_root().get_node(\"mainNode\").hidePath(cubePath)\n\nfunc moveTo(_path_, _cubePath_):\n\tpath = _path_\n\tcubePath = []\n\tcubePath = [] + _cubePath_\n\t\n\tnextPosition()"
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 

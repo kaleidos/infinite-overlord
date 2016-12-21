@@ -1,6 +1,6 @@
 extends Node2D
 
-var axial
+var cube
 
 # class member variables go here, for example:
 # var a = 2
@@ -12,7 +12,7 @@ func _ready():
 	pass
 
 func canMove():
-	return true
+	return false
 	
 func getAnimation():
 	return "tile_appear_water"	

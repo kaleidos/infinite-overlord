@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://tile_grass.gd" type="Script" id=1]
-[ext_resource path="res://animations/tile_appear_grass.tres" type="Animation" id=2]
-[ext_resource path="res://assets/bottom_rock_1.png" type="Texture" id=3]
-[ext_resource path="res://assets/rock_1.png" type="Texture" id=4]
-[ext_resource path="res://assets/particles/water_waves.png" type="Texture" id=5]
-[ext_resource path="res://assets/grass.png" type="Texture" id=6]
-[ext_resource path="res://assets/grass_decoration.png" type="Texture" id=7]
+[ext_resource path="res://assets/tilered.png" type="Texture" id=2]
+[ext_resource path="res://animations/tile_appear_grass.tres" type="Animation" id=3]
+[ext_resource path="res://assets/bottom_rock_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/rock_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/particles/water_waves.png" type="Texture" id=6]
+[ext_resource path="res://assets/grass.png" type="Texture" id=7]
+[ext_resource path="res://assets/grass_decoration.png" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -17,12 +18,18 @@ points = Vector2Array( 49.0429, -61.3783, 98.681, -0.0606461, 49.6269, 60.089, -
 
 script/script = ExtResource( 1 )
 
+[node name="hover" type="Sprite" parent="."]
+
+visibility/visible = false
+z/z = 1
+texture = ExtResource( 2 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/tile_appear_grass = ExtResource( 2 )
+anims/tile_appear_grass = ExtResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -31,11 +38,11 @@ autoplay = "StandyByAnimation"
 [node name="Bottom" type="Sprite" parent="."]
 
 transform/pos = Vector2( 0, 60 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="Middle" type="Sprite" parent="."]
 
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]
 
@@ -44,7 +51,7 @@ transform/pos = Vector2( -8.38875, -80.5508 )
 transform/scale = Vector2( 2.22168, 1 )
 enabled = true
 editor_only = false
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 0, 0 )
 scale = 1.0
 color = Color( 1, 1, 1, 1 )
@@ -64,14 +71,13 @@ shadow/item_mask = 1
 
 [node name="Grass" type="Sprite" parent="."]
 
-transform/pos = Vector2( 0, -9.80719 )
-transform/scale = Vector2( 1.08906, 1.08906 )
-texture = ExtResource( 6 )
+transform/pos = Vector2( 0, -9 )
+texture = ExtResource( 7 )
 
 [node name="Grass_Deco" type="Sprite" parent="."]
 
-transform/pos = Vector2( -0.598755, -16.7836 )
-texture = ExtResource( 7 )
+transform/pos = Vector2( 0, -9 )
+texture = ExtResource( 8 )
 
 [node name="area" type="Area2D" parent="."]
 
