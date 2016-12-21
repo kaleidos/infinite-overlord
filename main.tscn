@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://mainView.gd" type="Script" id=2]
-[ext_resource path="res://menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://subview.gd" type="Script" id=3]
+[ext_resource path="res://menu.tscn" type="PackedScene" id=4]
 
 [node name="mainNode" type="Node2D"]
 
@@ -12,17 +13,17 @@ script/script = ExtResource( 1 )
 [node name="Control" type="Control" parent="."]
 
 focus/ignore_mouse = false
-focus/stop_mouse = true
+focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 96.0
 margin/top = 4.0
-margin/right = 136.0
-margin/bottom = 44.0
+margin/right = 1970.0
+margin/bottom = 1019.0
 
 [node name="Viewport" type="Viewport" parent="Control"]
 
-rect = Rect2( 0, 0, 40, 40 )
+rect = Rect2( 0, 0, 1874, 1015 )
 own_world = true
 world = null
 transparent_bg = false
@@ -38,15 +39,19 @@ physics/object_picking = false
 gui/disable_input = false
 script/script = ExtResource( 2 )
 
-[node name="main" type="Node2D" parent="Control/Viewport"]
+[node name="Node2D" type="Node2D" parent="Control/Viewport"]
+
+script/script = ExtResource( 3 )
+
+[node name="main" type="Node2D" parent="Control/Viewport/Node2D"]
 
 editor/display_folded = true
 
-[node name="map" type="Node2D" parent="Control/Viewport/main"]
+[node name="map" type="Node2D" parent="Control/Viewport/Node2D/main"]
 
 z/z = 1
 
-[node name="camera" type="Camera2D" parent="Control/Viewport"]
+[node name="camera" type="Camera2D" parent="Control/Viewport/Node2D"]
 
 anchor_mode = 1
 rotating = false
@@ -65,7 +70,7 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
-[node name="menu" parent="." instance=ExtResource( 3 )]
+[node name="menu" parent="." instance=ExtResource( 4 )]
 
 visibility/visible = false
 transform/pos = Vector2( 1645.16, 929.393 )
