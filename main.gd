@@ -5,6 +5,7 @@ var mapCells = []
 
 var tilesTypes
 var character
+var tileSize = Vector2(150, 122)
 
 func _ready():
 	prepareTiles()
@@ -126,10 +127,8 @@ func hidePath(path):
 	
 func _button_pressed(viewport, event, shape, node):
 	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_RIGHT && event.pressed == 0):	
-		if node.canMove():
+		if node.canMove() && !character.moving:
 			var path = breadthFirstSearch(character.cube, node.cube)
-			
-			#prepareTilesPaht(path)
 			
 			showPath(path)
 			
@@ -146,8 +145,6 @@ func _button_pressed(viewport, event, shape, node):
 
 			character.moveTo(pathCords, path)
 			character.cube = node.cube
-			
-			showAdjacentTiles(node)
 
 var drag = false
 var initPosCam = false
@@ -197,6 +194,9 @@ func prepareTiles():
 	tilesTypes.rock = load("res://tile1.tscn")
 	tilesTypes.grass = load("res://tile_grass.tscn")
 	tilesTypes.water = load("res://tile_water.tscn")
+	tilesTypes.structures = {}
+	tilesTypes.structures.tower = load("res://structures/tower.tscn")
+	tilesTypes.structures.town = load("res://structures/town.tscn")
 	
 	tilesTypes.all = ["rock", "grass", "water"]
 	
@@ -210,12 +210,28 @@ func initCharacter():
 	character.set_z(10)
 	character.cube = Vector3(0, 0, 0)
 
-	var tile = showTile(character.get_pos(), Vector3(0,0,0))
+	var tileHome = showTile(character.get_pos(), Vector3(0,0,0))
 	
-	showAdjacentTiles(tile)
+	addStructure(tileHome, "tower")
+	showAdjacentTiles(tileHome)
+	
+	var pos = Vector2(tileHome.get_pos().x, tileHome.get_pos().y)
+	pos.y +=  tileSize.y * 3
+	
+	var tileTown = showTile(pos, Vector3(0, -3, 3))
+	addStructure(tileTown, "town")
+	showAdjacentTiles(tileTown)
+	
+func addStructure(cell, type):	
+	var structure = tilesTypes.structures[type].instance()
+	structure.set_z(9)
+	cell.add_child(structure)
+		
+func showAdjacentTilesByCords(pos):
+	var tile = getTileByPos(pos)
+	showAdjacentTiles(tile.node)
 
 func showAdjacentTiles(node):
-	var tileSize = Vector2(150, 122)
 	var pos
 	var cube = node.cube
 	
