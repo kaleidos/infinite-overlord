@@ -36,8 +36,7 @@ modulate = Color( 0.652321, 0.11792, 0.65625, 1 )
 [node name="BeforeTop" type="Sprite" parent="."]
 
 visibility/opacity = 0.0
-transform/pos = Vector2( 6.20657, -52.8017 )
-transform/scale = Vector2( 0.854709, 0.854709 )
+transform/pos = Vector2( 0, -40 )
 texture = ExtResource( 2 )
 
 [node name="Top" type="Sprite" parent="."]
