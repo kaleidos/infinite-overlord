@@ -8,6 +8,17 @@ var tilesTypes
 var character
 var structureSelected
 var tileSize = Vector2(150, 122)
+var structure = {
+	"mine": 0,
+	"temple": 0,
+	"tower": 0,
+	"town": 0
+}
+
+var totalResources = {
+	"gold": 0,
+	"experience": 0
+};
 
 func _ready():
 	prepareTiles()
@@ -30,6 +41,15 @@ func generateUI():
 	menuPosition.y -= 50
 
 	menu.set_pos(menuPosition)
+	
+	var panelScene = load("res://panel.tscn")
+	var panel = panelScene.instance()
+		
+	self.get_node("ui").add_child(panel)
+	
+	var panelPosition = Vector2(10, 10)
+
+	panel.set_pos(panelPosition)	
 
 func neighborsVector(cords, valid = false):
 	var result = {}
@@ -357,7 +377,7 @@ func randomTile():
 	var randTileType = randi() % 100
 	var tileType
 	
-	if randTileType < 50:
+	if randTileType < 65:
 		tileType = "grass"
 	elif randTileType < 85:
 		tileType = "rock"

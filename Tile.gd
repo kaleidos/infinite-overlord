@@ -12,6 +12,8 @@ func addStructure(type):
 	structureNode.set_z(9)
 	self.add_child(structureNode)
 	
+	root().structure[type] += 1
+	
 	if structureNode.has_node("AnimationPlayer"):
 		structureNode.get_node("AnimationPlayer").play("standard_structure_appear")
 	
