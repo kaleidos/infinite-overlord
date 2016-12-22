@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui_skull.png" type="Texture" id=2]
@@ -12,12 +12,13 @@
 [ext_resource path="res://assets/buttons/farm_btn.png" type="Texture" id=10]
 [ext_resource path="res://assets/buttons/farm_btn_over.png" type="Texture" id=11]
 [ext_resource path="res://assets/buttons/farm_btn_disabled.png" type="Texture" id=12]
-[ext_resource path="res://assets/buttons/mine_btn.png" type="Texture" id=13]
-[ext_resource path="res://assets/buttons/mine_btn_over.png" type="Texture" id=14]
-[ext_resource path="res://assets/buttons/mine_btn_disabled.png" type="Texture" id=15]
-[ext_resource path="res://assets/buttons/temple_btn.png" type="Texture" id=16]
-[ext_resource path="res://assets/buttons/temple_btn_over.png" type="Texture" id=17]
-[ext_resource path="res://assets/buttons/temple_btn_disabled.png" type="Texture" id=18]
+[ext_resource path="res://assets/buttons/back.png" type="Texture" id=13]
+[ext_resource path="res://assets/buttons/mine_btn.png" type="Texture" id=14]
+[ext_resource path="res://assets/buttons/mine_btn_over.png" type="Texture" id=15]
+[ext_resource path="res://assets/buttons/mine_btn_disabled.png" type="Texture" id=16]
+[ext_resource path="res://assets/buttons/temple_btn.png" type="Texture" id=17]
+[ext_resource path="res://assets/buttons/temple_btn_over.png" type="Texture" id=18]
+[ext_resource path="res://assets/buttons/temple_btn_disabled.png" type="Texture" id=19]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -156,9 +157,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 3.0
+margin/left = 82.0
 margin/top = -10.0
-margin/right = 79.0
+margin/right = 158.0
 margin/bottom = 63.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -168,6 +169,23 @@ textures/hover = ExtResource( 11 )
 textures/disabled = ExtResource( 12 )
 params/scale = Vector2( 0.1, 0.1 )
 
+[node name="exit" type="TextureButton" parent="Buildings"]
+
+hint/tooltip = "Farm"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 19.0
+margin/top = 5.0
+margin/right = 95.0
+margin/bottom = 78.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+params/scale = Vector2( 0.1, 0.1 )
+
 [node name="mine" type="TextureButton" parent="Buildings"]
 
 hint/tooltip = "Farm"
@@ -175,16 +193,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 98.0
+margin/left = 177.0
 margin/top = -10.0
-margin/right = 174.0
+margin/right = 253.0
 margin/bottom = 63.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 13 )
-textures/hover = ExtResource( 14 )
-textures/disabled = ExtResource( 15 )
+textures/normal = ExtResource( 14 )
+textures/hover = ExtResource( 15 )
+textures/disabled = ExtResource( 16 )
 params/scale = Vector2( 0.1, 0.1 )
 
 [node name="temple" type="TextureButton" parent="Buildings"]
@@ -194,21 +212,23 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 193.0
+margin/left = 272.0
 margin/top = -10.0
-margin/right = 269.0
+margin/right = 348.0
 margin/bottom = 63.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 16 )
-textures/hover = ExtResource( 17 )
-textures/disabled = ExtResource( 18 )
+textures/normal = ExtResource( 17 )
+textures/hover = ExtResource( 18 )
+textures/disabled = ExtResource( 19 )
 params/scale = Vector2( 0.1, 0.1 )
 
 [connection signal="button_up" from="BuildBtn" to="." method="_on_BuildBtn_button_up"]
 
 [connection signal="button_up" from="Buildings/farm" to="." method="_on_farm_button_up"]
+
+[connection signal="button_up" from="Buildings/exit" to="." method="_on_exit_button_up"]
 
 [connection signal="button_up" from="Buildings/mine" to="." method="_on_mine_button_up"]
 

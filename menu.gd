@@ -52,3 +52,7 @@ func _on_mine_button_up():
 
 func _on_temple_button_up():
 	mainNode.prepareBuild("temple")
+
+func _on_exit_button_up():
+	get_node("Buildings").hide()
+	get_node("BuildBtn").show()
