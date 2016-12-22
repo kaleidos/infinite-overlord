@@ -20,5 +20,5 @@ func _on_Timer_timeout():
 	root.totalResources.gold += root.structure.mine
 	root.totalResources.experience += root.structure.temple
 	
-	print(root.totalResources.gold, " Gold")
-	print(root.totalResources.experience, " Experience")
+	get_node("label-gold").set_text(str(root.totalResources.gold, " (x", root.structure.mine, ")"))
+	get_node("label-experience").set_text(str(root.totalResources.experience, " (x", root.structure.temple, ")"))

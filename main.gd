@@ -52,8 +52,9 @@ func generateUI():
 		
 	self.get_node("ui").add_child(panel)
 	
-	var panelPosition = Vector2(10, 10)
+	var panelPosition = Vector2(0, 0)
 
+	panel.set_size(Vector2(screenSize.width, 50))
 	panel.set_pos(panelPosition)	
 
 func neighborsVector(cords, valid = false):
