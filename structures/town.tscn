@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 points = Vector2Array( -103.083, -186.003, 81.8873, -186.752, 173.998, -73.6724, 82.6362, 36.4114, -100.837, 36.4114, -197.441, -73.6724 )
 
-[node name="Node2D" type="Node2D"]
+[node name="town" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

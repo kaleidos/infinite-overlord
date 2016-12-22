@@ -19,12 +19,15 @@ func addStructure(type):
 		structureNode.get_node("AnimationPlayer").play("standard_summon")
 	
 	rootNode.bought(type)
+	rootNode.character.refreshOverlap()
 	
 func addResource(type):	
 	self.resource = type
 	var resourceNode = root().tilesTypes.resources[type].instance()
 	resourceNode.set_z(9)
 	self.add_child(resourceNode)
+	
+	root().character.refreshOverlap()
 	
 	if resourceNode.has_node("AnimationPlayer"):
 		resourceNode.get_node("AnimationPlayer").play("standard_structure_appear")

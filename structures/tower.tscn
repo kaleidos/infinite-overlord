@@ -3,7 +3,7 @@
 [ext_resource path="res://animations/standard_structure_appear.tres" type="Animation" id=1]
 [ext_resource path="res://assets/base.png" type="Texture" id=2]
 
-[node name="Node2D" type="Node2D"]
+[node name="tower" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
