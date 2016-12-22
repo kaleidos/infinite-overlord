@@ -203,6 +203,9 @@ func _input(event):
 	
 	var zoom = get_node("camera").get_zoom()
 	var zoomStep = 0.10
+	
+	if (event.is_action_pressed("ui_cancel")):
+        self.get_tree().quit()
 
 	if (event.type == InputEvent.MOUSE_MOTION):
 		if(drag == true):
