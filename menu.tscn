@@ -171,7 +171,7 @@ params/scale = Vector2( 0.1, 0.1 )
 
 [node name="exit" type="TextureButton" parent="Buildings"]
 
-hint/tooltip = "Farm"
+hint/tooltip = "Exit"
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -188,7 +188,7 @@ params/scale = Vector2( 0.1, 0.1 )
 
 [node name="mine" type="TextureButton" parent="Buildings"]
 
-hint/tooltip = "Farm"
+hint/tooltip = "Mine"
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -207,7 +207,7 @@ params/scale = Vector2( 0.1, 0.1 )
 
 [node name="temple" type="TextureButton" parent="Buildings"]
 
-hint/tooltip = "Farm"
+hint/tooltip = "Temple"
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2

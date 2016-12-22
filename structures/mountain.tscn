@@ -25,6 +25,7 @@ autoplay = "StandyByAnimation"
 
 [node name="Top" type="Sprite" parent="."]
 
+visibility/opacity = 0.0
 transform/pos = Vector2( 0, -40 )
 texture = ExtResource( 3 )
 
