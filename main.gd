@@ -221,6 +221,7 @@ func prepareTiles():
 	tilesTypes.structures.tower = load("res://structures/tower.tscn")
 	tilesTypes.structures.town = load("res://structures/town.tscn")
 	tilesTypes.structures.mine = load("res://structures/mine.tscn")
+	tilesTypes.structures.temple = load("res://structures/temple.tscn")
 	
 	tilesTypes.resources = {}
 	tilesTypes.resources.mountain = load("res://structures/mountain.tscn")
@@ -267,6 +268,14 @@ func prepareBuild(type):
 		for tile in tiles.keys():
 			if tiles[tile] != null && tiles[tile].node.hasResource("mountain") && !tiles[tile].node.hasStructure("mine"):
 				selectTile(tiles[tile].node)
+	elif structureSelected == "temple":
+		if characterTile.node.hasResource("forest") && !characterTile.node.hasStructure("temple"):
+			selectTile(characterTile.node)
+	
+		for tile in tiles.keys():
+			if tiles[tile] != null && tiles[tile].node.hasResource("forest") && !tiles[tile].node.hasStructure("temple"):
+				selectTile(tiles[tile].node)
+						
 				
 func cleanSelectedNodes():
 	for tile in selectedTiles:
