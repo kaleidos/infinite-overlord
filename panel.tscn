@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://panel.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui_borders/top_bar_border.png" type="Texture" id=2]
 [ext_resource path="res://assets/ui_borders/short_top_border.png" type="Texture" id=3]
+[ext_resource path="res://assets/book.png" type="Texture" id=4]
+[ext_resource path="res://assets/coin.png" type="Texture" id=5]
+[ext_resource path="res://assets/food.png" type="Texture" id=6]
 
 [node name="Panel" type="Panel"]
 
@@ -13,25 +16,46 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 1854.0
-margin/bottom = 40.0
+margin/bottom = 50.0
 script/script = ExtResource( 1 )
 
 [node name="gem-border" type="Sprite" parent="."]
 
-transform/pos = Vector2( 949.457, 43.4 )
+transform/pos = Vector2( 949.457, 54.4 )
 transform/scale = Vector2( 0.408551, 0.408551 )
 texture = ExtResource( 2 )
 
 [node name="border" type="Sprite" parent="."]
 
-transform/pos = Vector2( 234.159, 46.7032 )
+transform/pos = Vector2( 234.159, 57.7032 )
 transform/scale = Vector2( 0.367038, 0.408551 )
 texture = ExtResource( 3 )
 
 [node name="border1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 1642.43, 46.7032 )
+transform/pos = Vector2( 1642.43, 57.7032 )
 transform/scale = Vector2( 0.332148, 0.408551 )
 texture = ExtResource( 3 )
+
+[node name="experience" type="Sprite" parent="."]
+
+transform/pos = Vector2( 27.2375, 22.1663 )
+transform/rot = -0.145943
+transform/scale = Vector2( 0.125751, 0.134328 )
+texture = ExtResource( 4 )
+
+[node name="gold" type="Sprite" parent="."]
+
+transform/pos = Vector2( 222.289, 22.4634 )
+transform/rot = -0.145943
+transform/scale = Vector2( 0.0920801, 0.0983604 )
+texture = ExtResource( 5 )
+
+[node name="gold1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 424.445, 26.0889 )
+transform/rot = -0.145943
+transform/scale = Vector2( 0.113644, 0.121395 )
+texture = ExtResource( 6 )
 
 
