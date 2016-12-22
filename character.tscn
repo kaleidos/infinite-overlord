@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/adelante_izq_s_1.tex" type="Texture" id=1]
+[ext_resource path="res://assets/player/adelante_izq_s_2.tex" type="Texture" id=2]
+[ext_resource path="res://assets/player/adelante_izq_s_3.tex" type="Texture" id=3]
+[ext_resource path="res://assets/player/adelante_izq_s_4.tex" type="Texture" id=4]
+[ext_resource path="res://animated_character.gd" type="Script" id=5]
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends KinematicBody2D\n\nvar walkspeed = 400\nvar targetPosition\nvar path\nvar moving = false\nvar cube\nvar cubePath\n\nfunc _ready():\n\tset_fixed_process(true)\n\nfunc _fixed_process(delta):\n\tif moving && (get_pos() - targetPosition).length() <= 10:\n\t\tnextPosition()\n\t\n\tif moving:\n\t\tvar direction = (targetPosition - get_pos()).normalized()\n\t\tvar motion = direction * walkspeed * delta\n\t\tmove(motion)\n\nfunc nextPosition():\n\tif !path.empty():\n\t\ttargetPosition = path[0]\n\t\tpath.pop_front()\t\n\t\tmoving = true\n\telse:\n\t\tmoving = false\n\t\tget_tree().get_root().get_node(\"mainNode\").hidePath(cubePath)\n\t\t\n\tget_tree().get_root().get_node(\"mainNode\").showAdjacentTilesByCords(targetPosition)\n\nfunc moveTo(_path_, _cubePath_):\n\tpath = _path_\n\tcubePath = []\n\tcubePath = [] + _cubePath_\n\t\n\tnextPosition()"
+script/source = "extends KinematicBody2D\n\nvar walkspeed = 400\nvar targetPosition\nvar path\nvar moving = false\nvar cube\nvar cubePath\n\nfunc _ready():\n\tset_fixed_process(true)\n\nfunc _fixed_process(delta):\n\tif moving && (get_pos() - targetPosition).length() <= 10:\n\t\tnextPosition()\n\t\n\tif moving:\n\t\tvar direction = (targetPosition - get_pos()).normalized()\n\t\tvar motion = direction * walkspeed * delta\n\t\tmove(motion)\n\nfunc nextPosition():\n\tif !path.empty():\n\t\ttargetPosition = path[0]\n\t\tpath.pop_front()\t\n\t\tmoving = true\n\t\tif (targetPosition <= get_pos()):\n\t\t    get_node(\"Sprite\").set_flip_h(false)\n\t\telse:\n\t\t\tget_node(\"Sprite\").set_flip_h(true)\n\t\tget_node(\"Sprite\").play(\"forward_left\")\n\telse:\n\t\tmoving = false\n\t\tget_node(\"Sprite\").stop()\n\t\tget_tree().get_root().get_node(\"mainNode\").hidePath(cubePath)\n\t\t\n\tget_tree().get_root().get_node(\"mainNode\").showAdjacentTilesByCords(targetPosition)\n\nfunc moveTo(_path_, _cubePath_):\n\tpath = _path_\n\tcubePath = []\n\tcubePath = [] + _cubePath_\n\t\n\tnextPosition()"
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ { "frames":[ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ], "loop":true, "name":"forward_left", "speed":5.0 } ]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 
@@ -14,8 +22,12 @@ collision/mask = 1
 collision/margin = 0.08
 script/script = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 
-texture = ExtResource( 1 )
+transform/pos = Vector2( 0, 2.00002 )
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "forward_left"
+script/script = ExtResource( 5 )
 
 
