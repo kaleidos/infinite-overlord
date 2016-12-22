@@ -16,7 +16,7 @@ func addStructure(type):
 	root().structure[type] += 1
 	
 	if structureNode.has_node("AnimationPlayer"):
-		structureNode.get_node("AnimationPlayer").play("standard_structure_appear")
+		structureNode.get_node("AnimationPlayer").play("standard_summon")
 	
 	rootNode.bought(type)
 	
