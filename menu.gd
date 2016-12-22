@@ -19,8 +19,25 @@ func setBuildPermissions():
 	var temple = get_node("Buildings/temple")
 	
 	mine.set_disabled(rootNode.totalResources.gold < rootNode.costs.mine)
+	if rootNode.totalResources.gold < rootNode.costs.mine:
+		mine.get_node("Label").set_text(str(rootNode.costs.mine - rootNode.totalResources.gold))
+		mine.get_node("Label").show()
+	else:
+		mine.get_node("Label").hide()	
+	
 	farm.set_disabled(rootNode.totalResources.gold < rootNode.costs.farm)
+	if rootNode.totalResources.gold < rootNode.costs.farm:
+		farm.get_node("Label").set_text(str(rootNode.costs.farm - rootNode.totalResources.gold))
+		farm.get_node("Label").show()
+	else:
+		farm.get_node("Label").hide()
+		
 	temple.set_disabled(rootNode.totalResources.gold < rootNode.costs.temple)
+	if rootNode.totalResources.gold < rootNode.costs.temple:
+		temple.get_node("Label").set_text(str(rootNode.costs.temple - rootNode.totalResources.gold))
+		temple.get_node("Label").show()
+	else:
+		temple.get_node("Label").hide()		
 
 func _on_Build_item_selected( index ):
 	var build = get_node("Build")

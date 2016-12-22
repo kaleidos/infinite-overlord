@@ -465,7 +465,7 @@ func showTile(center, cube, type = null):
 	
 	mapCells.append(tile)
 	
-	var showLabel = true
+	var showLabel = false
 	
 	if showLabel:
 		var text = Label.new()
