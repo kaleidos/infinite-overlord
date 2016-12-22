@@ -13,7 +13,7 @@ func addStructure(type):
 	self.add_child(structureNode)
 	
 	if structureNode.has_node("AnimationPlayer"):
-		structureNode.get_node("AnimationPlayer").play("Structure Appear")	
+		structureNode.get_node("AnimationPlayer").play("standard_structure_appear")
 	
 func addResource(type):	
 	self.resource = type

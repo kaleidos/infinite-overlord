@@ -19,7 +19,8 @@ autoplay = "StandyByAnimation"
 
 [node name="Top" type="Sprite" parent="."]
 
-transform/pos = Vector2( 0, -60 )
+visibility/opacity = 0.0
+transform/pos = Vector2( 0, -40 )
 texture = ExtResource( 2 )
 
 [node name="Particles2D" type="Particles2D" parent="Top"]
