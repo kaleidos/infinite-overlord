@@ -145,7 +145,7 @@ func hidePath(path):
 func _button_pressed(viewport, event, shape, node):
 	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_LEFT && event.pressed == 0):	
 		if node.has_node("selected"):
-			addStructure(node, structureSelected)
+			node.addStructure(structureSelected)
 			cleanSelectedNodes()
 	
 	if(event.type == InputEvent.MOUSE_BUTTON && event.button_index == BUTTON_RIGHT && event.pressed == 0):	
@@ -222,7 +222,9 @@ func prepareTiles():
 	tilesTypes.structures.town = load("res://structures/town.tscn")
 	tilesTypes.structures.mine = load("res://structures/mine.tscn")
 	
-	tilesTypes.all = ["rock", "grass", "water"]
+	tilesTypes.resources = {}
+	tilesTypes.resources.mountain = load("res://structures/mountain.tscn")
+	tilesTypes.resources.forest = load("res://structures/forest.tscn")
 	
 func initCharacter():
 	var characterScene = load("res://character.tscn")
@@ -234,17 +236,14 @@ func initCharacter():
 	character.set_z(10)
 	character.cube = Vector3(0, 0, 0)
 
-	var tileHome = showTile(character.get_pos(), Vector3(0,0,0), "rock")
-	tileHome.get_node("AnimationPlayer").connect("finished", self, "addStructure", [tileHome, "tower"])
+	var tileHome = showTile(character.get_pos(), Vector3(0,0,0), {"type": "rock", "structure": "tower"})
 	showAdjacentTiles(tileHome)
 	
 	var pos = Vector2(tileHome.get_pos().x, tileHome.get_pos().y)
 	pos.y +=  tileSize.y * 3
 	
-	var tileTown = showTile(pos, Vector3(0, -3, 3), "rock")
+	var tileTown = showTile(pos, Vector3(0, -3, 3), {"type": "rock", "structure": "town"})
 	showAdjacentTiles(tileTown)
-	
-	tileTown.get_node("AnimationPlayer").connect("finished", self, "addStructure", [tileTown, "town"])
 
 func selectTile(node):
 	var selected = tilesTypes.selected.instance()
@@ -258,23 +257,22 @@ func unSelectTile(node):
 func prepareBuild(type):
 	structureSelected = type
 	
+	var characterTile = getTileByCube(character.cube)
 	var tiles = neighbors(character.cube, true)
-	for tile in tiles.keys():
-		if tiles[tile] != null:
-			selectTile(tiles[tile].node)
-			
+
+	if structureSelected == "mine":
+		if characterTile.node.hasResource("mountain") && !characterTile.node.hasStructure("mine"):
+			selectTile(characterTile.node)
+	
+		for tile in tiles.keys():
+			if tiles[tile] != null && tiles[tile].node.hasResource("mountain") && !tiles[tile].node.hasStructure("mine"):
+				selectTile(tiles[tile].node)
+				
 func cleanSelectedNodes():
 	for tile in selectedTiles:
 		unSelectTile(tile)
 		
 	selectedTiles = []
-	
-func addStructure(cell, type):	
-	var structure = tilesTypes.structures[type].instance()
-	structure.set_z(9)
-	cell.add_child(structure)
-	
-	structure.get_node("AnimationPlayer").play("Structure Appear")	
 	
 func showAdjacentTilesByCords(pos):
 	var tile = getTileByPos(pos)
@@ -339,19 +337,66 @@ func getTileByPos(pos):
 			
 	return null	
 	
+func getTileByCube(cube):
+	for cell in mapCells:
+		if cell.cube == cube:
+			return cell
+			
+	return null		
+	
+func randomTile():
+	var randTileType = randi() % 100
+	var tileType
+	
+	if randTileType < 50:
+		tileType = "grass"
+	elif randTileType < 85:
+		tileType = "rock"
+	else:
+		return {
+			"type": "water"
+		}
+	
+	var randTileResource = randi() % 100
+	var tileResource = null
+	
+	if randTileResource < 60:
+		tileResource = null
+	elif randTileResource < 85:
+		tileResource = "forest"
+	else:
+		tileResource = "mountain"
+
+	return {
+		"type": tileType,
+		"resource": tileResource
+	}
+	
+func addResource(tile, type):
+	tile.addResource(type)
+	
+func addStructure(tile, type):
+	tile.addStructure(type)	
+			
 func showTile(center, cube, type = null):
 	var tile
 	if type == null:
-		tile = tilesTypes.all[randi() % tilesTypes.all.size()]
+		tile = randomTile()
 	else:
 		tile = type
 
-	var tileIns = tilesTypes[tile].instance()
+	var tileIns = tilesTypes[tile.type].instance()
 	
 	get_node("main/map").add_child(tileIns)
 	tileIns.set_pos(center)
 	tileIns.set_z(center.y)
 	tileIns.cube = cube
+	
+	if tile.has("resource") && tile.resource != null:
+		tileIns.get_node("AnimationPlayer").connect("finished", self, "addResource", [tileIns, tile.resource])
+		
+	if tile.has("structure") && tile.structure != null:
+		tileIns.get_node("AnimationPlayer").connect("finished", self, "addStructure", [tileIns, tile.structure])
 	
 	if tileIns.get_z() > character.get_z():
 		character.set_z(tileIns.get_z() + 1)

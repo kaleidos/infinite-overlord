@@ -14,7 +14,7 @@
 custom_solver_bias = 0.0
 points = Vector2Array( 49.0429, -61.3783, 98.681, -0.0606461, 49.6269, 60.089, -0.303192, 60.673, -49.6493, 60.965, -99.2874, -0.0606461, -49.0653, -59.9183 )
 
-[node name="Node2D" type="Node2D"]
+[node name="grass" type="Node2D"]
 
 script/script = ExtResource( 1 )
 

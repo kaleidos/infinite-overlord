@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/mountain.png" type="Texture" id=2]
 [ext_resource path="res://assets/particles/water_pixel.png" type="Texture" id=3]
 
-[node name="Node2D" type="Node2D"]
+[node name="mountain" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

@@ -13,7 +13,7 @@
 custom_solver_bias = 0.0
 points = Vector2Array( 49.6606, -60.6127, 99.1614, 0.211792, 48.69, 60.0657, -50.3115, 60.0657, -99.1653, -0.11174, -49.3409, -59.3186 )
 
-[node name="Node2D" type="Node2D"]
+[node name="water" type="Node2D"]
 
 script/script = ExtResource( 1 )
 
