@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://assets/particles/shadow_particle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/particles/SummoningCircle.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://animations/standard_structure_appear.tres" type="Animation" id=6]
 [ext_resource path="res://animations/standard_summon.tres" type="Animation" id=7]
 [ext_resource path="res://assets/particles/particles_smoke.png" type="Texture" id=8]
+[ext_resource path="res://chickens.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -134,5 +135,10 @@ params/anim_initial_pos = 0.0
 randomness/spread = 25.0
 randomness/linear_velocity = 1.0
 color/color = Color( 0.992188, 0.827469, 0.682129, 1 )
+
+[node name="chickens" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 33.9843, 1.04157 )
+transform/scale = Vector2( 0.7, 0.7 )
 
 

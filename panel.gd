@@ -19,6 +19,8 @@ func _on_Timer_timeout():
 	var root = root()
 	root.totalResources.gold += root.structure.mine
 	root.totalResources.experience += root.structure.temple
+	root.totalResources.food += root.structure.farm
 	
 	get_node("label-gold").set_text(str(root.totalResources.gold, " (x", root.structure.mine, ")"))
 	get_node("label-experience").set_text(str(root.totalResources.experience, " (x", root.structure.temple, ")"))
+	get_node("label-food").set_text(str(root.totalResources.food, " (x", root.structure.farm, ")"))

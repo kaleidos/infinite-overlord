@@ -11,13 +11,15 @@ var tileSize = Vector2(150, 122)
 var structure = {
 	"mine": 0,
 	"temple": 0,
+	"farm": 0,
 	"tower": 0,
 	"town": 0
 }
 
 var totalResources = {
 	"gold": 10,
-	"experience": 0
+	"experience": 0,
+	"food": 0
 }
 
 var costs = {
@@ -250,6 +252,7 @@ func prepareTiles():
 	tilesTypes.structures = {}
 	tilesTypes.structures.mine = load("res://structures/mine.tscn")
 	tilesTypes.structures.temple = load("res://structures/temple.tscn")
+	tilesTypes.structures.farm = load("res://structures/farm.tscn")
 	
 	tilesTypes.resources = {}
 	tilesTypes.resources.tower = load("res://structures/tower.tscn")
@@ -305,8 +308,15 @@ func prepareBuild(type):
 		for tile in tiles.keys():
 			if tiles[tile] != null && tiles[tile].node.hasResource("forest") && !tiles[tile].node.hasStructure("temple"):
 				selectTile(tiles[tile].node)
+	elif structureSelected == "farm":
+		print("farrrm!")
+		if characterTile.node.type == "grass" && characterTile.node.structure == null && characterTile.node.resource == null:
+			selectTile(characterTile.node)
+	
+		for tile in tiles.keys():
+			if tiles[tile] != null && tiles[tile].node.type == "grass" && tiles[tile].node.structure == null && tiles[tile].node.resource == null:
+				selectTile(tiles[tile].node)
 						
-				
 func cleanSelectedNodes():
 	for tile in selectedTiles:
 		unSelectTile(tile)
