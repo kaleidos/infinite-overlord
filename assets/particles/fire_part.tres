@@ -1,0 +1,7 @@
+[gd_resource type="ColorRamp" format=1]
+
+[resource]
+
+offsets = FloatArray( 0.122807, 0.415205, 0.994152 )
+colors = ColorArray( 0.914063, 0.280149, 0.110687, 0.485098, 0.400619, 0.400619, 0.414494, 0.707602, 1, 1, 1, 0 )
+

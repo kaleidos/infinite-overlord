@@ -1,11 +1,26 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=11 format=1]
 
-[ext_resource path="res://assets/templo_mini.png" type="Texture" id=1]
+[ext_resource path="res://assets/particles/SummoningCircle.png" type="Texture" id=1]
 [ext_resource path="res://assets/forest.png" type="Texture" id=2]
-[ext_resource path="res://assets/particles/lizi_00022.png" type="Texture" id=3]
-[ext_resource path="res://assets/particles/lizi_00013.png" type="Texture" id=4]
-[ext_resource path="res://animations/standard_structure_appear.tres" type="Animation" id=5]
-[ext_resource path="res://animations/standard_summon.tres" type="Animation" id=6]
+[ext_resource path="res://assets/templo_mini.png" type="Texture" id=3]
+[ext_resource path="res://assets/particles/lizi_00023.png" type="Texture" id=4]
+[ext_resource path="res://assets/particles/fire_part.tres" type="ColorRamp" id=5]
+[ext_resource path="res://assets/particles/lizi_00022.png" type="Texture" id=6]
+[ext_resource path="res://assets/particles/lizi_00013.png" type="Texture" id=7]
+[ext_resource path="res://animations/standard_structure_appear.tres" type="Animation" id=8]
+[ext_resource path="res://animations/standard_summon.tres" type="Animation" id=9]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "Standby"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top/Light2D:energy")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 1, 1.3, 1.6, 3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.5, 3.0, 0.5, 0.5 ] }
 
 [node name="temple" type="Node2D"]
 
@@ -21,13 +36,317 @@ modulate = Color( 0.652321, 0.11792, 0.65625, 1 )
 [node name="BeforeTop" type="Sprite" parent="."]
 
 visibility/opacity = 0.0
-transform/pos = Vector2( 0, -70 )
+transform/pos = Vector2( 6.20657, -52.8017 )
+transform/scale = Vector2( 0.854709, 0.854709 )
 texture = ExtResource( 2 )
 
 [node name="Top" type="Sprite" parent="."]
 
 transform/pos = Vector2( 0, -40 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Particles2D1" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( 36.2496, 65.452 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D2" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( 46.6692, 53.8577 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D3" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( 57.0788, 42.4201 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D4" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( 67.4883, 30.7254 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D5" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( 63.3759, 11.3199 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D6" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( 77.8979, 18.3881 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D7" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( -17.9728, 18.6452 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D8" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( -26.7117, 27.2555 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D9" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( -34.9365, 36.894 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.09759, 0.0995019 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Particles2D10" type="Particles2D" parent="Top"]
+
+transform/pos = Vector2( 21.2968, -57.9556 )
+transform/rot = -179.728
+transform/scale = Vector2( 0.249784, 0.254678 )
+config/amount = 25
+config/lifetime = 4.0
+config/texture = ExtResource( 4 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 1.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 1.0
+color/color = Color( 0, 0, 0, 1 )
+color/color_ramp = ExtResource( 5 )
+
+[node name="Light2D" type="Light2D" parent="Top"]
+
+transform/pos = Vector2( 2.77334, 53.753 )
+enabled = true
+editor_only = false
+texture = ExtResource( 6 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 0, 0, 1 )
+energy = 0.5
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
 
 [node name="Magic" type="Node2D" parent="."]
 
@@ -38,7 +357,7 @@ transform/pos = Vector2( -60.3762, -60.3793 )
 transform/scale = Vector2( 0.428022, 0.379034 )
 config/amount = 80
 config/lifetime = 4.0
-config/texture = ExtResource( 3 )
+config/texture = ExtResource( 6 )
 params/direction = 0.0
 params/spread = 50.0
 params/linear_velocity = 720.59
@@ -56,16 +375,16 @@ params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="Light2D" type="Light2D" parent="Magic"]
 
 visibility/opacity = 0.0
 transform/pos = Vector2( -2.36167, -18.221 )
 transform/scale = Vector2( 2.37586, 2.37586 )
 enabled = true
 editor_only = false
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 offset = Vector2( 0, 0 )
-scale = 1.0
+scale = 2.0
 color = Color( 0.822059, 0.0431372, 0.933333, 1 )
 energy = 0.0
 mode = 0
@@ -86,8 +405,9 @@ shadow/item_mask = 1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/standard_structure_appear = ExtResource( 5 )
-anims/standard_summon = ExtResource( 6 )
+anims/Standby = SubResource( 1 )
+anims/standard_structure_appear = ExtResource( 8 )
+anims/standard_summon = ExtResource( 9 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
