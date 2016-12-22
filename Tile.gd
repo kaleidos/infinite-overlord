@@ -8,6 +8,7 @@ func addStructure(type):
 	if self.resource != null:
 		self.remove_child(self.get_node(self.resource))
 
+	self.resource = null
 	self.structure = type
 	var structureNode = root().tilesTypes.structures[type].instance()
 	structureNode.set_z(9)
@@ -22,6 +23,7 @@ func addStructure(type):
 	rootNode.character.refreshOverlap()
 	
 func addResource(type):	
+	self.structure = null
 	self.resource = type
 	var resourceNode = root().tilesTypes.resources[type].instance()
 	resourceNode.set_z(9)
