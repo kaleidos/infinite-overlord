@@ -21,4 +21,9 @@ tracks/2/path = NodePath("Dust:visibility/opacity")
 tracks/2/interp = 1
 tracks/2/imported = false
 tracks/2/keys = { "times":FloatArray( 0.3, 0.5, 1.2 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.6, 0.0 ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Shadow_Structure:visibility/opacity")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0, 0.3, 0.4 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.5, 1.0, 0.0 ] }
 

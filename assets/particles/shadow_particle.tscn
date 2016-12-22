@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://assets/particles/shadow_particle.png" type="Texture" id=1]
+
+[node name="Shadow_Structure" type="Node2D"]
+
+[node name="lizi_00022" type="Sprite" parent="."]
+
+visibility/opacity = 0.5
+transform/pos = Vector2( -0.388428, -1.05342 )
+transform/scale = Vector2( 0.997941, 0.520425 )
+texture = ExtResource( 1 )
+modulate = Color( 0.0196078, 0, 0, 1 )
+
+
