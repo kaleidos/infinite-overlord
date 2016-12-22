@@ -46,33 +46,33 @@ script/script = ExtResource( 1 )
 
 [node name="skull" type="Sprite" parent="."]
 
-transform/pos = Vector2( 253.861, 26.6344 )
+transform/pos = Vector2( 253.861, 4.6344 )
 transform/scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="top-left" type="Sprite" parent="."]
 
-transform/pos = Vector2( 28.4327, 31.3476 )
-transform/scale = Vector2( 0.2, 0.2 )
+transform/pos = Vector2( 13.3026, 17.2983 )
+transform/scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 
 [node name="top-right" type="Sprite" parent="."]
 
-transform/pos = Vector2( 446.059, 35.4932 )
-transform/scale = Vector2( 0.2, 0.2 )
+transform/pos = Vector2( 459.568, 18.2017 )
+transform/scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 flip_h = true
 
 [node name="bottom-left" type="Sprite" parent="."]
 
-transform/pos = Vector2( 32.344, 185.978 )
-transform/scale = Vector2( 0.2, 0.2 )
+transform/pos = Vector2( 18.2947, 197.866 )
+transform/scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 
 [node name="bottom-right" type="Sprite" parent="."]
 
-transform/pos = Vector2( 443.995, 185.243 )
-transform/scale = Vector2( 0.2, 0.2 )
+transform/pos = Vector2( 460.746, 199.292 )
+transform/scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 flip_h = true
 
