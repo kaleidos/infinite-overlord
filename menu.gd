@@ -1,12 +1,10 @@
 extends Panel
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var mainNode
 
 func _ready():
+	mainNode = root()
 	set_fixed_process(true)
-	setItemList()
 	
 func _fixed_process(delta):
 	setBuildPermissions()
@@ -14,36 +12,15 @@ func _fixed_process(delta):
 func root():
 	return get_tree().get_root().get_node("mainNode")	
 	
-func setItemList():
-	var rootNode = root()
-	
-	get_node("ItemList").add_item("Build")
-	
-	var build = get_node("Build")
-	build.add_item(str("Mine (", rootNode.costs.mine, ")"))
-	build.add_item(str("Temple (", rootNode.costs.temple , ")"))
-	
 func setBuildPermissions():
 	var rootNode = root()
-	var build = get_node("Build")
+	var farm = get_node("Buildings/farm")
+	var mine = get_node("Buildings/mine")
+	var temple = get_node("Buildings/temple")
 	
-	if (rootNode.totalResources.gold >= rootNode.costs.mine):
-		build.set_item_disabled(0, false)
-	else:
-		build.set_item_disabled(0, true)
-		
-	if (rootNode.totalResources.gold >= rootNode.costs.temple):
-		build.set_item_disabled(1, false)
-	else:
-		build.set_item_disabled(1, true)		
-
-func _on_ItemList_item_selected( index ):
-	print(index)
-	if index == 0:
-		get_node("ItemList").hide()
-		get_node("Build").show()
-		
-	get_node("ItemList").unselect(index)
+	mine.set_disabled(rootNode.totalResources.gold < rootNode.costs.mine)
+	farm.set_disabled(rootNode.totalResources.gold < rootNode.costs.farm)
+	temple.set_disabled(rootNode.totalResources.gold < rootNode.costs.temple)
 
 func _on_Build_item_selected( index ):
 	var build = get_node("Build")
@@ -62,3 +39,16 @@ func _on_Build_item_selected( index ):
 		mainNode.prepareBuild("temple")
 		
 	get_node("Build").unselect(index)
+
+func _on_BuildBtn_button_up():
+	get_node("Buildings").show()
+	get_node("BuildBtn").hide()
+
+func _on_farm_button_up():
+	mainNode.prepareBuild("farm")
+
+func _on_mine_button_up():
+	mainNode.prepareBuild("mine")
+
+func _on_temple_button_up():
+	mainNode.prepareBuild("temple")

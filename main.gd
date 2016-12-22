@@ -23,6 +23,7 @@ var totalResources = {
 var costs = {
 	"mine": 10,
 	"temple": 15,
+	"farm": 10
 }
 
 func _ready():

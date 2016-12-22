@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui_skull.png" type="Texture" id=2]
@@ -7,21 +7,19 @@
 [ext_resource path="res://assets/ui_borders/short_top_border.png" type="Texture" id=5]
 [ext_resource path="res://assets/ui_borders/short_bottom_border.png" type="Texture" id=6]
 [ext_resource path="res://assets/blood-bg.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/buttons/build_btn.png" type="Texture" id=8]
+[ext_resource path="res://assets/buttons/build_btn_over.png" type="Texture" id=9]
+[ext_resource path="res://assets/buttons/farm_btn.png" type="Texture" id=10]
+[ext_resource path="res://assets/buttons/farm_btn_over.png" type="Texture" id=11]
+[ext_resource path="res://assets/buttons/farm_btn_disabled.png" type="Texture" id=12]
+[ext_resource path="res://assets/buttons/mine_btn.png" type="Texture" id=13]
+[ext_resource path="res://assets/buttons/mine_btn_over.png" type="Texture" id=14]
+[ext_resource path="res://assets/buttons/mine_btn_disabled.png" type="Texture" id=15]
+[ext_resource path="res://assets/buttons/temple_btn.png" type="Texture" id=16]
+[ext_resource path="res://assets/buttons/temple_btn_over.png" type="Texture" id=17]
+[ext_resource path="res://assets/buttons/temple_btn_disabled.png" type="Texture" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
-
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
-bg_color = Color( 0.6, 0.6, 0.6, 1 )
-light_color = Color( 0.8, 0.8, 0.8, 1 )
-dark_color = Color( 0.8, 0.8, 0.8, 1 )
-border_size = 0
-border_blend = true
-draw_bg = true
-
-[sub_resource type="StyleBoxFlat" id=2]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -117,41 +115,103 @@ texture = ExtResource( 6 )
 [node name="ui-bg" type="Sprite" parent="."]
 
 visibility/opacity = 0.87
-transform/pos = Vector2( 239.075, 106.828 )
+transform/pos = Vector2( 239.075, 107.316 )
 transform/scale = Vector2( 0.588183, -0.527419 )
 texture = ExtResource( 7 )
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="BuildBtn" type="TextureButton" parent="."]
 
+hint/tooltip = "Build"
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 51.0
-margin/top = 46.0
-margin/right = 91.0
-margin/bottom = 86.0
-custom_styles/bg = SubResource( 2 )
-custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin/left = 24.0
+margin/top = 40.0
+margin/right = 100.0
+margin/bottom = 113.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 8 )
+textures/hover = ExtResource( 9 )
+params/scale = Vector2( 0.1, 0.1 )
 
-[node name="Build" type="ItemList" parent="."]
+[node name="Buildings" type="Container" parent="."]
 
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 51.0
-margin/top = 46.0
-margin/right = 91.0
-margin/bottom = 86.0
-custom_styles/bg = SubResource( 2 )
-custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin/left = 21.0
+margin/top = 51.0
+margin/right = 447.0
+margin/bottom = 208.0
 
-[connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
+[node name="farm" type="TextureButton" parent="Buildings"]
 
-[connection signal="item_selected" from="Build" to="." method="_on_Build_item_selected"]
+hint/tooltip = "Farm"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = -10.0
+margin/right = 79.0
+margin/bottom = 63.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 10 )
+textures/hover = ExtResource( 11 )
+textures/disabled = ExtResource( 12 )
+params/scale = Vector2( 0.1, 0.1 )
+
+[node name="mine" type="TextureButton" parent="Buildings"]
+
+hint/tooltip = "Farm"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 98.0
+margin/top = -10.0
+margin/right = 174.0
+margin/bottom = 63.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+textures/hover = ExtResource( 14 )
+textures/disabled = ExtResource( 15 )
+params/scale = Vector2( 0.1, 0.1 )
+
+[node name="temple" type="TextureButton" parent="Buildings"]
+
+hint/tooltip = "Farm"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 193.0
+margin/top = -10.0
+margin/right = 269.0
+margin/bottom = 63.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 16 )
+textures/hover = ExtResource( 17 )
+textures/disabled = ExtResource( 18 )
+params/scale = Vector2( 0.1, 0.1 )
+
+[connection signal="button_up" from="BuildBtn" to="." method="_on_BuildBtn_button_up"]
+
+[connection signal="button_up" from="Buildings/farm" to="." method="_on_farm_button_up"]
+
+[connection signal="button_up" from="Buildings/mine" to="." method="_on_mine_button_up"]
+
+[connection signal="button_up" from="Buildings/temple" to="." method="_on_temple_button_up"]
 
 
