@@ -247,12 +247,12 @@ func prepareTiles():
 	tilesTypes.grass = load("res://tile_grass.tscn")
 	tilesTypes.water = load("res://tile_water.tscn")
 	tilesTypes.structures = {}
-	tilesTypes.structures.tower = load("res://structures/tower.tscn")
-	tilesTypes.structures.town = load("res://structures/town.tscn")
 	tilesTypes.structures.mine = load("res://structures/mine.tscn")
 	tilesTypes.structures.temple = load("res://structures/temple.tscn")
 	
 	tilesTypes.resources = {}
+	tilesTypes.resources.tower = load("res://structures/tower.tscn")
+	tilesTypes.resources.town = load("res://structures/town.tscn")	
 	tilesTypes.resources.mountain = load("res://structures/mountain.tscn")
 	tilesTypes.resources.forest = load("res://structures/forest.tscn")
 	
@@ -266,13 +266,13 @@ func initCharacter():
 	character.set_z(10)
 	character.cube = Vector3(0, 0, 0)
 
-	var tileHome = showTile(character.get_pos(), Vector3(0,0,0), {"type": "rock", "structure": "tower"})
+	var tileHome = showTile(character.get_pos(), Vector3(0,0,0), {"type": "rock", "resource": "tower"})
 	showAdjacentTiles(tileHome)
 	
 	var pos = Vector2(tileHome.get_pos().x, tileHome.get_pos().y)
 	pos.y +=  tileSize.y * 3
 	
-	var tileTown = showTile(pos, Vector3(0, -3, 3), {"type": "rock", "structure": "town"})
+	var tileTown = showTile(pos, Vector3(0, -3, 3), {"type": "rock", "resource": "town"})
 	showAdjacentTiles(tileTown)
 
 func selectTile(node):
