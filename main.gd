@@ -16,9 +16,14 @@ var structure = {
 }
 
 var totalResources = {
-	"gold": 0,
+	"gold": 10,
 	"experience": 0
-};
+}
+
+var costs = {
+	"mine": 10,
+	"temple": 15,
+}
 
 func _ready():
 	prepareTiles()
@@ -401,11 +406,15 @@ func randomTile():
 		"resource": tileResource
 	}
 	
+func bought(type):
+	if costs.has(type):
+		totalResources["gold"] -= costs[type]	
+	
 func addResource(tile, type):
 	tile.addResource(type)
 	
 func addStructure(tile, type):
-	tile.addStructure(type)	
+	tile.addStructure(type)
 			
 func showTile(center, cube, type = null):
 	var tile

@@ -4,6 +4,7 @@ func root():
 	return get_tree().get_root().get_node("mainNode")
 	
 func addStructure(type):	
+	var rootNode = root()
 	if self.resource != null:
 		self.remove_child(self.get_node(self.resource))
 
@@ -16,6 +17,8 @@ func addStructure(type):
 	
 	if structureNode.has_node("AnimationPlayer"):
 		structureNode.get_node("AnimationPlayer").play("standard_structure_appear")
+	
+	rootNode.bought(type)
 	
 func addResource(type):	
 	self.resource = type
