@@ -42,9 +42,16 @@ func _ready():
 	prepareTiles()
 	initCharacter()
 	generateUI()	
-		
-	#set_process(true)
+	
+	set_process(true)
 	set_process_input(true)
+
+func _process(delta):
+	var capture = get_viewport().get_screen_capture()
+	
+	if capture != null && !capture.empty():
+		var timeDict = OS.get_datetime()
+		capture.save_png(str("user://infinite-overlord", timeDict.hour, ":", timeDict.minute, ".", timeDict.second, "_", timeDict.year, ".png"))
 	
 func generateUI():
 	var menuScene = load("res://menu.tscn")
@@ -73,6 +80,9 @@ func generateUI():
 	var region = Rect2(Vector2(0, 0), screenSize)
 
 	get_node("bgLayer/bg").edit_set_rect(region)
+
+func prepareScreenCapture():
+	get_viewport().queue_screen_capture()
 
 func neighborsVector(cords, valid = false):
 	var result = {}
@@ -222,6 +232,10 @@ func _input(event):
 	var zoom = cameraNode.get_zoom()
 	var zoomStep = 0.10
 	
+	if Input.is_action_pressed("print"):
+		print("----")
+		prepareScreenCapture()
+	
 	if (event.is_action_pressed("ui_cancel")):
         self.get_tree().quit()
 
@@ -323,7 +337,6 @@ func prepareBuild(type):
 			if tiles[tile] != null && tiles[tile].node.hasResource("forest") && !tiles[tile].node.hasStructure("temple"):
 				selectTile(tiles[tile].node)
 	elif structureSelected == "farm":
-		print("farrrm!")
 		if characterTile.node.type == "grass" && characterTile.node.structure == null && characterTile.node.resource == null:
 			selectTile(characterTile.node)
 	
