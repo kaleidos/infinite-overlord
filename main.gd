@@ -33,6 +33,9 @@ var cameraNode
 var mapNode
 var uiNode
 
+var cloudScene
+var cloudsNodes = []
+
 func _ready():
 	mainNode = get_node("main")
 	cameraNode = get_node("camera")		
@@ -42,16 +45,56 @@ func _ready():
 	prepareTiles()
 	initCharacter()
 	generateUI()	
+	clouds()
 	
 	set_process(true)
 	set_process_input(true)
 
 func _process(delta):
+	refreshClouds(delta)
+	
 	var capture = get_viewport().get_screen_capture()
 	
 	if capture != null && !capture.empty():
 		var timeDict = OS.get_datetime()
 		capture.save_png(str("user://infinite-overlord", timeDict.hour, ":", timeDict.minute, ".", timeDict.second, "_", timeDict.year, ".png"))
+
+func refreshClouds(delta):
+	var screenSize = get_viewport().get_rect().size
+	
+	while cloudsNodes.size() < 6:
+		var cloud = cloudScene.instance()
+	
+		var randomPosition = randi() % 100
+		var positionY = (screenSize.y / 2) * randomPosition / 100
+		
+		if randi() % 2 == 1:
+			positionY = -positionY
+
+		var position = Vector2(mainNode.get_pos().x + screenSize.x, mainNode.get_pos().y + positionY)
+		
+		position.x += randi() % 500
+		
+		var cloudSizes = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+		var rand = randi() % cloudSizes.size()
+
+		cloud.set_scale(Vector2(cloudSizes[rand], cloudSizes[rand]))
+		cloud.set_pos(position)
+		
+		cloudsNodes.append(cloud)
+		mapNode.add_child(cloud)
+		
+	for cloud in cloudsNodes:
+		var pos = cloud.get_pos()
+		pos.x -= 100 * delta
+		cloud.set_pos(pos)
+		
+		if cloud.get_pos().x < -(screenSize.x):
+			mapNode.remove_child(cloud)
+			cloudsNodes.erase(cloud)
+	
+func clouds():	
+	cloudScene =  load("res://assets/particles/cloud_part.tscn")
 	
 func generateUI():
 	var menuScene = load("res://menu.tscn")
