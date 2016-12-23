@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://start.gd" type="Script" id=1]
 [ext_resource path="res://assets/bg.jpg" type="Texture" id=2]
 [ext_resource path="res://assets/skull_title_text.png" type="Texture" id=3]
+[ext_resource path="res://assets/play_game.png" type="Texture" id=4]
 
 [node name="StartNode" type="Node2D"]
 
@@ -20,21 +21,20 @@ transform/pos = Vector2( 1018.24, 404.611 )
 transform/scale = Vector2( 0.813876, 0.813876 )
 texture = ExtResource( 3 )
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 979.0
-margin/top = 709.0
-margin/right = 1055.0
-margin/bottom = 779.0
+margin/left = 794.0
+margin/top = 730.0
+margin/right = 1242.0
+margin/bottom = 835.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Start"
-flat = false
+textures/normal = ExtResource( 4 )
 
 [connection signal="button_up" from="StartButton" to="." method="_on_StartButton_button_up"]
 
