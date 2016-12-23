@@ -36,11 +36,18 @@ func nextPosition():
 		targetPosition = path[0]
 		path.pop_front()	
 		moving = true
-		if (targetPosition <= get_pos()):
-		    get_node("Sprite").set_flip_h(false)
+		if (targetPosition.y < get_pos().y):
+			if (targetPosition >= get_pos()):
+			    get_node("Sprite").set_flip_h(false)
+			else:
+                get_node("Sprite").set_flip_h(true)
+			get_node("Sprite").play("backward")
 		else:
-			get_node("Sprite").set_flip_h(true)
-		get_node("Sprite").play("forward_left")
+		    if (targetPosition <= get_pos()):
+			    get_node("Sprite").set_flip_h(false)
+		    else:
+			    get_node("Sprite").set_flip_h(true)
+		    get_node("Sprite").play("forward")
 	else:
 		moving = false
 		get_node("Sprite").stop()
