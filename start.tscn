@@ -1,9 +1,27 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://start.gd" type="Script" id=1]
 [ext_resource path="res://assets/bg.jpg" type="Texture" id=2]
 [ext_resource path="res://assets/skull_title_text.png" type="Texture" id=3]
 [ext_resource path="res://assets/play_game.png" type="Texture" id=4]
+[ext_resource path="res://assets/particles/lizi_00021.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "Light"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Color( 0.391405, 0.101379, 0.589844, 1 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:energy")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 1.5, 3 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.5, 3.0, 0.5 ] }
 
 [node name="StartNode" type="Node2D"]
 
@@ -35,6 +53,41 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="."]
+
+transform/pos = Vector2( 1025.98, 780.795 )
+transform/scale = Vector2( 18.2874, 6.97817 )
+enabled = true
+editor_only = false
+texture = ExtResource( 5 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.391405, 0.101379, 0.589844, 1 )
+energy = 0.5
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Light = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 [connection signal="button_up" from="StartButton" to="." method="_on_StartButton_button_up"]
 
