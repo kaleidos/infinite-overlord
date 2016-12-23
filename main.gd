@@ -143,6 +143,49 @@ func neighbors(init, valid = false):
 
 	return result
 
+func heuristic(a, b):
+   return max(abs(a.x - b.x), max(abs(a.y - b.y), abs(a.z - b.z)))
+
+# A*
+#func breadthFirstSearch(start, goal):
+#	var frontier = []
+#	frontier.append({"cords": start, "priority": 0})
+#	
+#	var came_from = {}
+#	came_from[start] = null
+#	var sorter = PrioritySorter.new()
+#
+#	while !frontier.empty():
+#		frontier.sort_custom(sorter, "sort")
+#		
+#		var current = frontier[0]
+#		frontier.pop_front()
+#	
+#		if current.cords == goal:
+#			break
+#	
+#		var neighborsList = []
+#		
+#		var neighborsTiles = neighborsVector(current.cords, true)
+#		
+#		for obj in neighborsTiles.keys():
+#			neighborsList.append(neighborsTiles[obj])	   
+#	
+#		for next in neighborsList:
+#			var priority = heuristic(goal, next)
+#			frontier.append({"cords": next, "priority": priority})
+#			
+#			came_from[next] = current.cords	
+#
+#	var current = goal 
+#	var path = [current]
+#	
+#	while current != start:
+#		current = came_from[current]
+#		path.append(current)
+#		
+#	return path
+
 func breadthFirstSearch(start, goal):
 	var frontier = []
 	frontier.append(start)
@@ -534,11 +577,6 @@ func removeNotBorderAnimations():
 		if removeLeft && cell.node.has_node("Water_3"):
 			cell.node.remove_child(cell.node.get_node("Water_3"))
 
-# #	var sorter = CellsSorter.new()
-# 	mapCells.sort_custom(sorter, "sortY")
-#class CellsSorter:
-#	func sortX(cell1, cell2):
-#		return cell1.axial.x > cell2.axial.x
-#		
-#	func sortY(cell1, cell2):
-#		return cell1.axial.y > cell2.axial.y
+class PrioritySorter:
+	func sort(cell1, cell2):
+		return cell1.priority < cell2.priority
