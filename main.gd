@@ -28,10 +28,20 @@ var costs = {
 	"farm": 10
 }
 
+var mainNode
+var cameraNode
+var mapNode
+var uiNode
+
 func _ready():
+	mainNode = get_node("main")
+	cameraNode = get_node("camera")		
+	mapNode = mainNode.get_node("map")
+	uiNode = get_node("ui")
+	
 	prepareTiles()
 	initCharacter()
-	generateUI()
+	generateUI()	
 		
 	#set_process(true)
 	set_process_input(true)
@@ -41,7 +51,7 @@ func generateUI():
 	var menu = menuScene.instance()
 	var screenSize = get_viewport().get_rect().size
 	
-	self.get_node("ui").add_child(menu)
+	uiNode.add_child(menu)
 	
 	var menuPosition = screenSize - menu.get_size()
 	
@@ -53,12 +63,16 @@ func generateUI():
 	var panelScene = load("res://panel.tscn")
 	var panel = panelScene.instance()
 		
-	self.get_node("ui").add_child(panel)
+	uiNode.add_child(panel)
 	
 	var panelPosition = Vector2(0, 0)
 
 	panel.set_size(Vector2(screenSize.width, 50))
 	panel.set_pos(panelPosition)	
+	
+	var region = Rect2(Vector2(0, 0), screenSize)
+
+	get_node("bgLayer/bg").edit_set_rect(region)
 
 func neighborsVector(cords, valid = false):
 	var result = {}
@@ -205,7 +219,7 @@ var initPosNode = false
 func _input(event):
 	var mouse_pos = get_global_mouse_pos()
 	
-	var zoom = get_node("camera").get_zoom()
+	var zoom = cameraNode.get_zoom()
 	var zoomStep = 0.10
 	
 	if (event.is_action_pressed("ui_cancel")):
@@ -221,7 +235,7 @@ func _input(event):
 			var nx = initPosNode.x - (0 + dist_x)
 			var ny = initPosNode.y - (0 + dist_y)
 		
-			get_node("main").set_pos(Vector2(nx,ny))
+			mainNode.set_pos(Vector2(nx,ny))
 	
 	if (event.type == InputEvent.MOUSE_BUTTON):
 		if (event.button_index == BUTTON_WHEEL_DOWN):
@@ -236,12 +250,12 @@ func _input(event):
 		if (event.button_index == BUTTON_MIDDLE):
 			if(Input.is_mouse_button_pressed(3)):
 				initPosMouse = get_global_mouse_pos()
-				initPosNode = get_node("main").get_pos()
+				initPosNode = mainNode.get_pos()
 				drag = true
 			else:
 				drag = false	
 				
-		get_node("camera").set_zoom(zoom)
+		cameraNode.set_zoom(zoom)
 			
 func prepareTiles():
 	tilesTypes = {}
@@ -264,7 +278,7 @@ func initCharacter():
 	var characterScene = load("res://character.tscn")
 	
 	character = characterScene.instance()
-	self.get_node("main").add_child(character)
+	mainNode.add_child(character)
 	
 	character.set_pos(Vector2(10, 30))
 	character.set_z(10)
@@ -440,7 +454,7 @@ func showTile(center, cube, type = null):
 
 	var tileIns = tilesTypes[tile.type].instance()
 	
-	get_node("main/map").add_child(tileIns)
+	mapNode.add_child(tileIns)
 	tileIns.set_pos(center)
 	tileIns.set_z(center.y)
 	tileIns.cube = cube

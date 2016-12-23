@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://assets/bg.jpg" type="Texture" id=2]
 
 [node name="mainNode" type="Node2D"]
 
@@ -28,6 +29,8 @@ drag_margin/bottom = 0.2
 
 [node name="main" type="Node2D" parent="."]
 
+z/z = 1
+
 [node name="map" type="Node2D" parent="main"]
 
 z/z = 1
@@ -38,5 +41,18 @@ layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
+
+[node name="bgLayer" type="CanvasLayer" parent="."]
+
+layer = -10
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="bg" type="Sprite" parent="bgLayer"]
+
+z/z = -1
+texture = ExtResource( 2 )
+centered = false
 
 
