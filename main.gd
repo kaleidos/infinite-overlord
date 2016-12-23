@@ -233,7 +233,6 @@ func _input(event):
 	var zoomStep = 0.10
 	
 	if Input.is_action_pressed("print"):
-		print("----")
 		prepareScreenCapture()
 	
 	if (event.is_action_pressed("ui_cancel")):
